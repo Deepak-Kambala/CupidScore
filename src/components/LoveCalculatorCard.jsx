@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CupidLogo from './CupidLogo';
 import {
   Heart,
   Sparkles,
@@ -164,11 +165,9 @@ export default function LoveCalculatorCard({
             </div>
           </div>
 
-          {/* Interlocking Symbol */}
+          {/* Interlocking Cupid Symbol */}
           <div className="md:col-span-1 flex justify-center py-1 md:py-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center shadow-md shadow-rose-500/25">
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-current animate-pulse" />
-            </div>
+            <CupidLogo size={38} variant="badge" className="hover:rotate-12 transition-transform shadow-rose-500/30" />
           </div>
 
           {/* Partner 2 Input */}

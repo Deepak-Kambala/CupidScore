@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="cupidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="50%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#ca8a04" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#fb7185" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular background aura for favicon visibility -->
+  <circle cx="50" cy="50" r="48" fill="url(#cupidGrad)" />
+  <circle cx="50" cy="50" r="45" fill="#1e1022" />
+  <circle cx="50" cy="50" r="44" stroke="url(#goldGrad)" stroke-width="1" stroke-opacity="0.4" fill="none" />
+
+  <!-- Celestial stars / sparkles -->
+  <path d="M78 22 L79.5 25.5 L83 27 L79.5 28.5 L78 32 L76.5 28.5 L73 27 L76.5 25.5 Z" fill="#fde047" />
+  <path d="M24 28 L25 30 L27 31 L25 32 L24 34 L23 32 L21 31 L23 30 Z" fill="#fde047" opacity="0.7" />
+  <path d="M74 72 L74.8 73.5 L76.5 74 L74.8 74.8 L74 76.5 L73.2 74.8 L71.5 74 L73.2 73.5 Z" fill="#fde047" opacity="0.6" />
+
+  <!-- Cupid Body Silhouette & Fine Contours -->
+  <!-- Wing 1 (Back) -->
+  <path d="M35 44 C30 35 24 30 17 31 C15 36 18 42 24 45 C20 45 17 48 18 51 C20 53 25 53 30 50 Z" 
+        fill="#fecdd3" opacity="0.8" />
+  <!-- Wing 2 (Front - Arched & Detailed) -->
+  <path d="M38 46 C35 34 27 24 18 23 C16 30 20 38 27 42 C22 43 19 47 21 52 C24 55 31 54 36 50 Z" 
+        fill="#fff1f2" />
+
+  <!-- Cupid Torso & Legs -->
+  <!-- Trailing Legs in flight -->
+  <path d="M38 60 C34 65 30 71 25 76 C23 78 20 77 22 74 C25 69 28 65 31 60 
+           C28 63 24 67 20 70 C18 72 17 70 18 68 C21 64 25 58 32 54" 
+        fill="#fecdd3" />
+  <!-- Body & Hip -->
+  <path d="M34 50 C33 55 34 60 38 63 C42 63 45 59 47 54 C47 50 43 46 38 47 Z" 
+        fill="#ffe4e6" />
+  <!-- Head & Hair curls -->
+  <circle cx="43" cy="40" r="6.5" fill="#ffe4e6" />
+  <!-- Hair curls -->
+  <path d="M38 38 C37 34 40 32 44 32 C48 32 50 35 49 38 C47 37 45 38 44 40 C41 38 39 39 38 38 Z" fill="#fde047" />
+
+  <!-- Front Arm holding bow -->
+  <path d="M44 47 C49 46 54 45 59 44 C61 44 62 46 60 48 C56 50 50 51 45 50 Z" fill="#ffe4e6" />
+  <!-- Rear Arm drawing string -->
+  <path d="M40 48 C42 50 44 51 46 52 C45 54 43 55 41 53 C39 52 38 50 40 48 Z" fill="#fecdd3" />
+
+  <!-- Bow (Graceful Curved Arc) -->
+  <path d="M68 23 C66 31 63 39 60 46 C57 53 54 62 52 70" 
+        stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round" />
+  <!-- Bow recurve tips -->
+  <path d="M68 23 C69 21 71 21 72 23" stroke="url(#goldGrad)" stroke-width="1.8" stroke-linecap="round" />
+  <path d="M52 70 C51 72 49 72 48 70" stroke="url(#goldGrad)" stroke-width="1.8" stroke-linecap="round" />
+
+  <!-- Bowstring drawn back to (46, 52) -->
+  <path d="M68 23 L46 52 L52 70" 
+        stroke="#ffffff" stroke-opacity="0.8" stroke-width="0.9" />
+
+  <!-- Arrow Shaft passing through bow -->
+  <line x1="43" y1="55" x2="77" y2="28" 
+        stroke="#fde047" stroke-width="1.6" stroke-linecap="round" />
+
+  <!-- Arrow Fletching / Feathers at nock -->
+  <path d="M42 56 L38 58 M43 54 L40 54 M45 57 L43 60" 
+        stroke="#fda4af" stroke-width="1.2" stroke-linecap="round" />
+
+  <!-- Heart-Shaped Arrow Tip -->
+  <g transform="translate(77, 28) rotate(50)">
+    <path d="M0 -1 C -2 -4, -6 -2, -6 2 C -6 6, 0 10, 0 10 C 0 10, 6 6, 6 2 C 6 -2, 2 -4, 0 -1 Z" 
+          fill="#f43f5e" stroke="#ffe4e6" stroke-width="0.8" />
+  </g>
+
+  <!-- Arrow Sparkle / Gleam -->
+  <circle cx="81" cy="25" r="1.5" fill="#ffffff" />
+  <line x1="81" y1="21" x2="81" y2="29" stroke="#ffffff" stroke-width="0.75" stroke-linecap="round" />
+  <line x1="77" y1="25" x2="85" y2="25" stroke="#ffffff" stroke-width="0.75" stroke-linecap="round" />
+</svg>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import CupidLogo from './CupidLogo';
 import { X, Download, Share2, Copy, Check, Sparkles, Image as ImageIcon } from 'lucide-react';
 
 function formatName(str) {
@@ -497,8 +498,10 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
             <span className={`absolute bottom-4 right-4 text-xs ${pt.goldText}`}>✦</span>
 
             {/* 1. Header Insignia */}
-            <div className="text-center pt-2 relative z-10">
-              <span className={`text-sm block leading-none mb-1 ${pt.goldText}`}>❦</span>
+            <div className="text-center pt-1.5 relative z-10 flex flex-col items-center">
+              <div className="mb-1">
+                <CupidLogo size={24} variant="icon" animated={false} />
+              </div>
               <span className={`text-[10px] uppercase font-bold tracking-[0.25em] block ${pt.goldText}`}>
                 C U P I D S C O R E
               </span>
@@ -614,8 +617,8 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
             {/* 6. Seal & Monogram Footer */}
             <div className="flex flex-col items-center pb-2 relative z-10">
-              <div className={`w-8 h-8 rounded-full border flex items-center justify-center text-xs font-serif shadow-sm mb-1 ${pt.sealBg}`}>
-                ❦
+              <div className={`w-8 h-8 rounded-full border flex items-center justify-center p-0.5 shadow-sm mb-1 ${pt.sealBg}`}>
+                <CupidLogo size={22} variant="icon" animated={false} />
               </div>
               <span className={`text-[9px] font-bold tracking-wider uppercase ${pt.goldText}`}>
                 AUTHENTICATED RECORD • NO. {serialId}

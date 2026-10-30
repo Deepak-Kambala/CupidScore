@@ -1,4 +1,5 @@
 import React from 'react';
+import CupidLogo from './CupidLogo';
 import { Heart, ArrowUp, Sparkles } from 'lucide-react';
 
 export default function Footer({ onOpenAbout, onOpenFeedback }) {
@@ -12,7 +13,8 @@ export default function Footer({ onOpenAbout, onOpenFeedback }) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           {/* Brand & Slogan */}
           <div className="space-y-1">
-            <div className="flex items-center justify-center md:justify-start gap-2">
+            <div className="flex items-center justify-center md:justify-start gap-2.5">
+              <CupidLogo size={32} variant="badge" animated={false} />
               <span className="font-editorial text-2xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">
                 CupidScore
               </span>

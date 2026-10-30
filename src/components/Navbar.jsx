@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CupidLogo from './CupidLogo';
 import {
   Heart,
   History,
@@ -45,11 +46,8 @@ export default function Navbar({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3 cursor-pointer select-none" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-400 text-white shadow-md shadow-rose-500/25">
-              <Heart className="w-5 h-5 fill-current animate-pulse" />
-              <Sparkles className="w-3 h-3 text-amber-200 absolute -top-1 -right-1" />
-            </div>
+          <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <CupidLogo size={42} variant="badge" className="group-hover:scale-105 transition-transform" />
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-editorial text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 dark:from-rose-400 dark:to-pink-300 bg-clip-text text-transparent tracking-tight">
