@@ -6,9 +6,7 @@ import {
   Download,
   Users,
   Music,
-  Zap,
-  Activity,
-  MessageCircleHeart,
+  Flame,
   ShieldCheck,
 } from 'lucide-react';
 import {
@@ -77,12 +75,12 @@ export default function LoveCalculatorCard({
     const clean2 = name2.trim();
 
     if (!clean1 || !clean2) {
-      setErrorMsg('Please enter both lovely names to calculate love ✨');
+      setErrorMsg('Please enter both names to calculate compatibility.');
       return;
     }
 
     if (!isValidName(clean1) || !isValidName(clean2)) {
-      setErrorMsg('Please use letters, spaces, or hyphens for names 💕');
+      setErrorMsg('Please use valid letters, spaces, or hyphens for names.');
       return;
     }
 
@@ -238,10 +236,10 @@ export default function LoveCalculatorCard({
           <button
             type="submit"
             disabled={isCalculating}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-bold text-white text-xs sm:text-sm bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-lg shadow-rose-500/30 transition-all cursor-pointer min-h-[46px] min-w-[200px]"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl font-semibold text-white text-xs sm:text-sm bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-lg shadow-rose-500/20 transition-all cursor-pointer min-h-[46px] min-w-[210px] tracking-wide"
           >
-            <Heart className={`w-4 h-4 sm:w-5 sm:h-5 fill-current ${isCalculating ? 'animate-spin' : 'animate-bounce'}`} />
-            <span>{isCalculating ? 'Consulting the Stars...' : 'Calculate Love ❤️'}</span>
+            <Heart className={`w-4 h-4 fill-current ${isCalculating ? 'animate-spin' : 'opacity-90'}`} />
+            <span>{isCalculating ? 'Analyzing Vibrations...' : 'Calculate Compatibility'}</span>
           </button>
 
           <button
@@ -298,8 +296,8 @@ export default function LoveCalculatorCard({
               <span className="font-editorial text-4xl sm:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
                 {result ? `${displayPercent}%` : '--%'}
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-rose-500 dark:text-rose-400 uppercase tracking-widest mt-0.5">
-                {result ? result.details.emoji + ' ' + result.details.tier : 'Awaiting Names'}
+              <span className="text-[10px] sm:text-[11px] font-semibold text-rose-500 dark:text-rose-400 uppercase tracking-[0.2em] mt-0.5">
+                {result ? result.details.tier : 'Awaiting Names'}
               </span>
             </div>
           </div>
@@ -326,7 +324,10 @@ export default function LoveCalculatorCard({
                   <div className="grid grid-cols-2 gap-2 pt-1 text-left">
                     <div className="p-2 rounded-xl bg-rose-50/60 dark:bg-slate-800/50 border border-rose-100/70 dark:border-rose-900/30">
                       <div className="flex justify-between items-center text-[11px] font-medium text-slate-600 dark:text-slate-300 mb-1">
-                        <span className="flex items-center gap-1">💖 Emotional</span>
+                        <span className="flex items-center gap-1.5">
+                          <Heart className="w-3 h-3 text-rose-500 fill-current" />
+                          <span>Emotional</span>
+                        </span>
                         <span className="font-bold text-rose-600">{result.pillars.emotional}%</span>
                       </div>
                       <div className="w-full bg-rose-200/50 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
@@ -339,7 +340,10 @@ export default function LoveCalculatorCard({
 
                     <div className="p-2 rounded-xl bg-pink-50/60 dark:bg-slate-800/50 border border-pink-100/70 dark:border-pink-900/30">
                       <div className="flex justify-between items-center text-[11px] font-medium text-slate-600 dark:text-slate-300 mb-1">
-                        <span className="flex items-center gap-1">🔥 Chemistry</span>
+                        <span className="flex items-center gap-1.5">
+                          <Flame className="w-3 h-3 text-pink-500 fill-current" />
+                          <span>Chemistry</span>
+                        </span>
                         <span className="font-bold text-pink-600">{result.pillars.chemistry}%</span>
                       </div>
                       <div className="w-full bg-pink-200/50 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
@@ -352,7 +356,10 @@ export default function LoveCalculatorCard({
 
                     <div className="p-2 rounded-xl bg-amber-50/60 dark:bg-slate-800/50 border border-amber-100/70 dark:border-amber-900/30">
                       <div className="flex justify-between items-center text-[11px] font-medium text-slate-600 dark:text-slate-300 mb-1">
-                        <span className="flex items-center gap-1">💬 Mind Sync</span>
+                        <span className="flex items-center gap-1.5">
+                          <Sparkles className="w-3 h-3 text-amber-500" />
+                          <span>Mind Sync</span>
+                        </span>
                         <span className="font-bold text-amber-600">{result.pillars.intellectual}%</span>
                       </div>
                       <div className="w-full bg-amber-200/50 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
@@ -365,7 +372,10 @@ export default function LoveCalculatorCard({
 
                     <div className="p-2 rounded-xl bg-purple-50/60 dark:bg-slate-800/50 border border-purple-100/70 dark:border-purple-900/30">
                       <div className="flex justify-between items-center text-[11px] font-medium text-slate-600 dark:text-slate-300 mb-1">
-                        <span className="flex items-center gap-1">🌿 Longevity</span>
+                        <span className="flex items-center gap-1.5">
+                          <ShieldCheck className="w-3 h-3 text-purple-500" />
+                          <span>Longevity</span>
+                        </span>
                         <span className="font-bold text-purple-600">{result.pillars.enduring}%</span>
                       </div>
                       <div className="w-full bg-purple-200/50 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
@@ -420,9 +430,9 @@ export default function LoveCalculatorCard({
                       setName1('Romeo');
                       setName2('Juliet');
                     }}
-                    className="px-2.5 py-1 rounded-lg text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer"
+                    className="px-3 py-1.5 rounded-xl text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50/80 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer transition-all"
                   >
-                    ❤️ Romeo & Juliet
+                    Romeo & Juliet
                   </button>
                   <button
                     type="button"
@@ -430,9 +440,9 @@ export default function LoveCalculatorCard({
                       setName1('Elizabeth');
                       setName2('Darcy');
                     }}
-                    className="px-2.5 py-1 rounded-lg text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer"
+                    className="px-3 py-1.5 rounded-xl text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50/80 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer transition-all"
                   >
-                    👑 Elizabeth & Darcy
+                    Elizabeth & Darcy
                   </button>
                   <button
                     type="button"
@@ -440,9 +450,9 @@ export default function LoveCalculatorCard({
                       setName1('Lancelot');
                       setName2('Guinevere');
                     }}
-                    className="px-2.5 py-1 rounded-lg text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer"
+                    className="px-3 py-1.5 rounded-xl text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50/80 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer transition-all"
                   >
-                    🏰 Lancelot & Guinevere
+                    Lancelot & Guinevere
                   </button>
                 </div>
               </div>

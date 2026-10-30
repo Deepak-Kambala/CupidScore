@@ -34,14 +34,15 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
     ctx.lineWidth = 1.5;
     ctx.strokeRect(48, 48, width - 96, height - 96);
 
-    // Corner decorative hearts
-    ctx.font = '28px sans-serif';
+    // Corner decorative elements
+    ctx.font = '22px serif';
+    ctx.fillStyle = '#fbbf24';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('✨', 70, 70);
-    ctx.fillText('✨', width - 70, 70);
-    ctx.fillText('✨', 70, height - 70);
-    ctx.fillText('✨', width - 70, height - 70);
+    ctx.fillText('✦', 70, 70);
+    ctx.fillText('✦', width - 70, 70);
+    ctx.fillText('✦', 70, height - 70);
+    ctx.fillText('✦', width - 70, height - 70);
 
     // Title / Brand
     ctx.fillStyle = '#fbcfe8';

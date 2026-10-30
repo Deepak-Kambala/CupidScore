@@ -107,7 +107,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
     ctx.textAlign = 'center';
     ctx.fillText('CUPID POST', 1040, 120);
     ctx.font = '36px sans-serif';
-    ctx.fillText('💌', 1040, 165);
+            ctx.fillText('✦', 1040, 165);
 
     // Header Date
     ctx.textAlign = 'left';
@@ -202,7 +202,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                 : 'text-slate-500 hover:text-slate-700'
             }`}
           >
-            ✍️ Compose Note
+            Compose Note
           </button>
           <button
             onClick={() => setMobileTab('preview')}
@@ -212,7 +212,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                 : 'text-slate-500 hover:text-slate-700'
             }`}
           >
-            💌 Stationery Preview
+            Stationery Preview
           </button>
         </div>
 
@@ -222,7 +222,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
             {/* Quick Inspiration Pills */}
             <div>
               <label className="block text-[11px] font-semibold uppercase tracking-wider text-rose-800/80 dark:text-rose-300/80 mb-1.5">
-                Spark Inspiration:
+                Inspiration Prompts:
               </label>
               <div className="flex flex-wrap gap-1.5">
                 {LETTER_PROMPTS.map((prompt, idx) => (
@@ -232,7 +232,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                     onClick={() => setContent(prompt.text)}
                     className="px-2.5 py-1 text-[11px] font-medium rounded-lg bg-rose-50 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 text-rose-700 dark:text-rose-300 border border-rose-200/60 dark:border-rose-900/40 transition-all cursor-pointer"
                   >
-                    ✨ {prompt.label}
+                    {prompt.label}
                   </button>
                 ))}
               </div>
@@ -313,7 +313,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                       : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
-                  🌸 Blush Rose
+                  Blush Silk
                 </button>
                 <button
                   type="button"
@@ -324,7 +324,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                       : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
-                  📜 Parchment
+                  Antique Parchment
                 </button>
                 <button
                   type="button"
@@ -335,7 +335,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                       : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
-                  🌙 Starlight
+                  Midnight Starlight
                 </button>
               </div>
             </div>
@@ -374,7 +374,7 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
                   }`}
                 >
                   <span>CUPID</span>
-                  <span className="text-base my-0.5">💌</span>
+                  <span className="text-base my-0.5 font-editorial font-bold">C</span>
                   <span>POST</span>
                 </div>
               </div>

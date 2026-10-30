@@ -68,11 +68,13 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Partner 1 Card */}
               <div className="rounded-2xl p-5 bg-rose-50/40 dark:bg-slate-800/60 border border-rose-100 dark:border-rose-900/40 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="text-3xl">{profile1.icon}</div>
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 font-editorial font-bold text-lg flex items-center justify-center border border-rose-200/80 dark:border-rose-900/60 shadow-xs shrink-0">
+                    #{profile1.numerologyNumber}
+                  </div>
                   <div>
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-rose-500">
-                      {valid1} • Vibration #{profile1.numerologyNumber}
+                      {valid1} • Soul Vibration
                     </span>
                     <h4 className="font-editorial text-xl font-bold">{profile1.name}</h4>
                   </div>
@@ -117,11 +119,13 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
 
               {/* Partner 2 Card */}
               <div className="rounded-2xl p-5 bg-pink-50/40 dark:bg-slate-800/60 border border-pink-100 dark:border-rose-900/40 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="text-3xl">{profile2.icon}</div>
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-2xl bg-pink-500/10 text-pink-600 dark:text-pink-400 font-editorial font-bold text-lg flex items-center justify-center border border-pink-200/80 dark:border-pink-900/60 shadow-xs shrink-0">
+                    #{profile2.numerologyNumber}
+                  </div>
                   <div>
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-pink-500">
-                      {valid2} • Vibration #{profile2.numerologyNumber}
+                      {valid2} • Soul Vibration
                     </span>
                     <h4 className="font-editorial text-xl font-bold">{profile2.name}</h4>
                   </div>

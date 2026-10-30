@@ -18,10 +18,10 @@ export default function LoveSpinnerModal({ isOpen, onClose, soundEnabled, confet
 
   // Title based on score
   const getLoveTitle = (pts) => {
-    if (pts >= 250) return "Cupid's Champion 👑";
-    if (pts >= 150) return 'Hopeless Romantic 💖';
-    if (pts >= 80) return 'Passionate Sweetheart 💕';
-    return 'Playful Flirt ✨';
+    if (pts >= 250) return "Master of Romance";
+    if (pts >= 150) return 'Devoted Soulmate';
+    if (pts >= 80) return 'Enchanted Sweetheart';
+    return 'Playful Flirt';
   };
 
   // Draw the wheel onto canvas
@@ -67,14 +67,15 @@ export default function LoveSpinnerModal({ isOpen, onClose, soundEnabled, confet
     ctx.beginPath();
     ctx.arc(centerX, centerY, 30, 0, 2 * Math.PI);
     ctx.fillStyle = '#ffffff';
-    ctx.shadowColor = 'rgba(0,0,0,0.2)';
+    ctx.shadowColor = 'rgba(0,0,0,0.15)';
     ctx.shadowBlur = 8;
     ctx.fill();
 
-    ctx.font = '20px sans-serif';
+    ctx.fillStyle = '#e11d48';
+    ctx.font = 'bold 20px "Italiana", serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('💖', centerX, centerY);
+    ctx.fillText('❦', centerX, centerY);
   };
 
   useEffect(() => {
@@ -190,9 +191,9 @@ export default function LoveSpinnerModal({ isOpen, onClose, soundEnabled, confet
           <button
             onClick={spinWheel}
             disabled={isSpinning}
-            className="px-8 py-3 rounded-2xl font-bold text-white text-xs sm:text-sm bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-lg shadow-rose-500/30 transition-all cursor-pointer disabled:opacity-50 min-w-[180px]"
+            className="px-8 py-3 rounded-2xl font-bold text-white text-xs sm:text-sm bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-lg shadow-rose-500/30 transition-all cursor-pointer disabled:opacity-50 min-w-[180px] tracking-wide"
           >
-            {isSpinning ? 'Spinning Destiny...' : 'Spin the Wheel 💕'}
+            {isSpinning ? 'Spinning Destiny...' : 'Spin Wheel'}
           </button>
         </div>
 

@@ -84,7 +84,7 @@ export function mapToPercent(combined, num1, num2) {
 export const PERSONALITY_TRAITS = {
   1: {
     name: 'The Sovereign Leader',
-    icon: '👑',
+    icon: 'I',
     traits: ['Independent', 'Ambitious', 'Confident', 'Pioneering', 'Magnetic'],
     strengths: ['Natural leader', 'Unwavering drive', 'Bold romantic gestures', 'Fiercely protective'],
     challenges: ['Can be stubborn', 'Needs independence', 'Dislikes vulnerability early on'],
@@ -93,7 +93,7 @@ export const PERSONALITY_TRAITS = {
   },
   2: {
     name: 'The Gentle Empath',
-    icon: '🕊️',
+    icon: 'II',
     traits: ['Intuitive', 'Devoted', 'Peaceful', 'Empathetic', 'Harmonious'],
     strengths: ['Incredible listener', 'Deep emotional intimacy', 'Loyal to the end', 'Gentle touch'],
     challenges: ['Sensitive to discord', 'Can bottle feelings', 'Needs constant reassurance'],
@@ -102,7 +102,7 @@ export const PERSONALITY_TRAITS = {
   },
   3: {
     name: 'The Radiant Muse',
-    icon: '🎨',
+    icon: 'III',
     traits: ['Expressive', 'Charming', 'Playful', 'Vibrant', 'Imaginative'],
     strengths: ['Brings endless laughter', 'Inspires creativity', 'Heartwarming optimism', 'Spontaneous'],
     challenges: ['Can scatter energy', 'Fears boredom', 'Sometimes hides pain behind smiles'],
@@ -111,7 +111,7 @@ export const PERSONALITY_TRAITS = {
   },
   4: {
     name: 'The Loyal Anchor',
-    icon: '🏰',
+    icon: 'IV',
     traits: ['Devoted', 'Grounded', 'Steadfast', 'Honest', 'Dependable'],
     strengths: ['Rock-solid fidelity', 'Builds lasting comfort', 'Always keeps promises', 'Calming presence'],
     challenges: ['Cautious with changes', 'Slow to open up', 'Can be rigid with routines'],
@@ -120,7 +120,7 @@ export const PERSONALITY_TRAITS = {
   },
   5: {
     name: 'The Wild Adventurer',
-    icon: '✨',
+    icon: 'V',
     traits: ['Free-spirited', 'Passionate', 'Curious', 'Electrifying', 'Dynamic'],
     strengths: ['Unforgettable dates', 'Keeps passion thrilling', 'Open-minded lover', 'Courageous heart'],
     challenges: ['Restless under routine', 'Fears feeling trapped', 'Craves variety'],
@@ -129,7 +129,7 @@ export const PERSONALITY_TRAITS = {
   },
   6: {
     name: 'The Sacred Nurturer',
-    icon: '🌹',
+    icon: 'VI',
     traits: ['Affectionate', 'Warm', 'Generous', 'Protective', 'Family-hearted'],
     strengths: ['Creates a cozy sanctuary', 'Unconditional tenderness', 'Heals broken hearts', 'Devoted'],
     challenges: ['Can over-give', 'Struggles to receive', 'Prone to idealizing lovers'],
@@ -138,7 +138,7 @@ export const PERSONALITY_TRAITS = {
   },
   7: {
     name: 'The Mystical Seeker',
-    icon: '🔮',
+    icon: 'VII',
     traits: ['Introspective', 'Enigmatic', 'Wise', 'Poetic', 'Intuitive'],
     strengths: ['Telepathic understanding', 'Profound spiritual bond', 'Values depth over small talk', 'Quiet loyalty'],
     challenges: ['Needs solitary retreat', 'Guarded heart', 'Over-analyzes emotions'],
@@ -147,7 +147,7 @@ export const PERSONALITY_TRAITS = {
   },
   8: {
     name: 'The Ambitious Dynamo',
-    icon: '💎',
+    icon: 'VIII',
     traits: ['Powerful', 'Generous', 'Tenacious', 'Visionary', 'Magnanimous'],
     strengths: ['Provides lavishly', 'Stands up for their partner', 'Transforms dreams into reality', 'Passionate'],
     challenges: ['Can be workaholic', 'Hides soft vulnerabilities', 'Wants to control the narrative'],
@@ -156,7 +156,7 @@ export const PERSONALITY_TRAITS = {
   },
   9: {
     name: 'The Compassionate Visionary',
-    icon: '🌌',
+    icon: 'IX',
     traits: ['Selfless', 'Artistic', 'Cosmic', 'Romantic', 'Inspiring'],
     strengths: ['Universal compassion', 'Soulful forgiveness', 'Inspires personal growth', 'Poetic love letters'],
     challenges: ['Prone to romantic disillusion', 'Carries the world’s sorrows', 'Sacrifices self'],
@@ -165,7 +165,7 @@ export const PERSONALITY_TRAITS = {
   },
   11: {
     name: 'The Illuminated Intuitive',
-    icon: '🌟',
+    icon: 'XI',
     traits: ['Psychic Bond', 'Illuminating', 'Deeply Spiritual', 'Telepathic', 'Empathetic'],
     strengths: ['Senses partner’s moods instantly', 'Spiritual awakening connection', 'Transcendent intimacy', 'Cosmic aura'],
     challenges: ['High nervous sensitivity', 'Can absorb partner’s stress', 'Needs emotional grounding'],
@@ -174,7 +174,7 @@ export const PERSONALITY_TRAITS = {
   },
   22: {
     name: 'The Master Builder of Dreams',
-    icon: '🏛️',
+    icon: 'XXII',
     traits: ['Transformational', 'Unshakable', 'World-Changer', 'Steadfast', 'Empowered'],
     strengths: ['Builds lifelong legacies', 'Unmatched resilience', 'Gives boundless security', 'Devoted provider'],
     challenges: ['High standards for self and partner', 'Needs balance between romance and duty'],
@@ -183,7 +183,7 @@ export const PERSONALITY_TRAITS = {
   },
   33: {
     name: 'The Cosmic Avatar of Love',
-    icon: '💖',
+    icon: 'XXXIII',
     traits: ['Unconditional', 'Divine Healer', 'Selfless Devotion', 'Luminous', 'Enlightened'],
     strengths: ['Pure unconditional love', 'Profound spiritual healing', 'Radiates joyful peace', 'Sacred tenderness'],
     challenges: ['Danger of martyrdom', 'Can forget own boundaries in devotion'],
@@ -314,7 +314,6 @@ export function getScoreDetails(percent) {
   if (percent >= 90) {
     return {
       tier: 'Cosmic Soulmates',
-      emoji: '💞',
       badge: 'Twin Flame Bond',
       summary: 'A breathtaking spiritual resonance. Your connection transcends the ordinary with profound intuition and magnetic devotion.',
       moodKey: 'dreamy',
@@ -324,7 +323,6 @@ export function getScoreDetails(percent) {
   if (percent >= 75) {
     return {
       tier: 'Deep Chemistry',
-      emoji: '💖',
       badge: 'Sparkling Passion',
       summary: 'Sparks fly effortlessly between you two. Strong emotional chemistry and natural harmony create an intoxicating connection.',
       moodKey: 'passionate',
@@ -334,7 +332,6 @@ export function getScoreDetails(percent) {
   if (percent >= 60) {
     return {
       tier: 'Sweet Romance',
-      emoji: '🌸',
       badge: 'Flourishing Harmony',
       summary: 'A delightful and genuine affection. Your shared laughter and complementary strengths promise continuous warmth and growth.',
       moodKey: 'flirty',
@@ -344,7 +341,6 @@ export function getScoreDetails(percent) {
   if (percent >= 45) {
     return {
       tier: 'Playful Sparks',
-      emoji: '✨',
       badge: 'Curious Dynamic',
       summary: 'A playful connection ripe with curiosity. Give each other space to share dreams and uncover the sweet treasures hidden within.',
       moodKey: 'playful',
@@ -353,7 +349,6 @@ export function getScoreDetails(percent) {
   }
   return {
     tier: 'Gentle Companionship',
-    emoji: '🕊️',
     badge: 'Endearing Friendship',
     summary: 'A comfortable and honest bond. The greatest epic romances often sprout from the soil of patient, mutual understanding and deep friendship.',
     moodKey: 'peaceful',

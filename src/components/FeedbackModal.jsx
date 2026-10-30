@@ -62,11 +62,11 @@ export default function FeedbackModal({ isOpen, onClose, feedbacks = [], onFeedb
         {submitted ? (
           <div className="py-12 text-center space-y-3">
             <CheckCircle className="w-14 h-14 text-emerald-500 mx-auto animate-bounce" />
-            <h3 className="font-serif text-xl font-bold text-slate-800 dark:text-slate-100">
-              Thank You Sweet Soul! 💖
+            <h3 className="font-editorial text-2xl font-bold text-slate-800 dark:text-slate-100">
+              Thank You Kindly
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
-              Your feedback fills our hearts with joy. May love and light guide your journey!
+              Your feedback is deeply appreciated and helps us craft an even more romantic experience.
             </p>
           </div>
         ) : (
@@ -112,21 +112,19 @@ export default function FeedbackModal({ isOpen, onClose, feedbacks = [], onFeedb
                     onMouseEnter={() => setHoverRating(star)}
                     onMouseLeave={() => setHoverRating(0)}
                     onClick={() => setRating(star)}
-                    className="p-1 text-2xl transition-transform hover:scale-125 cursor-pointer"
+                    className="p-1 transition-transform hover:scale-115 cursor-pointer"
                   >
-                    <span
-                      className={
+                    <Star
+                      className={`w-5 h-5 ${
                         (hoverRating || rating) >= star
-                          ? 'text-amber-400 drop-shadow-sm'
+                          ? 'text-amber-400 fill-amber-400'
                           : 'text-slate-300 dark:text-slate-600'
-                      }
-                    >
-                      ★
-                    </span>
+                      }`}
+                    />
                   </button>
                 ))}
                 <span className="text-xs font-semibold text-rose-500 ml-2">
-                  {rating === 5 ? 'Celestial! 🌟' : rating === 4 ? 'Lovely 💕' : 'Thank you! ✨'}
+                  {rating === 5 ? 'Exceptional' : rating === 4 ? 'Delightful' : 'Appreciated'}
                 </span>
               </div>
             </div>
@@ -162,7 +160,7 @@ export default function FeedbackModal({ isOpen, onClose, feedbacks = [], onFeedb
                 className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 active:scale-95 shadow-md shadow-rose-500/25 transition-all cursor-pointer"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>Submit Feedback ✨</span>
+                <span>Submit Feedback</span>
               </button>
             </div>
           </form>

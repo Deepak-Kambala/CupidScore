@@ -29,16 +29,15 @@ export default function LoveOracle({ moodKey = 'dreamy', names = null }) {
 
         <div className="relative z-10 flex flex-col items-center text-center">
           {/* Oracle Header */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-2xl animate-bounce">🔮</span>
-            <span className="text-xs uppercase tracking-widest font-semibold text-rose-300/80">
+          <div className="flex items-center gap-2 mb-2">
+            <Compass className="w-4 h-4 text-rose-300/80" />
+            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-rose-300/90">
               Celestial Whispers
             </span>
-            <span className="text-2xl animate-bounce" style={{ animationDelay: '0.2s' }}>✨</span>
           </div>
 
           <h2 className="font-editorial text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-200 via-pink-100 to-amber-200 bg-clip-text text-transparent mb-4">
-            The Love Oracle Whispers...
+            The Oracle Whispers
           </h2>
 
           {/* Parchment Box */}
