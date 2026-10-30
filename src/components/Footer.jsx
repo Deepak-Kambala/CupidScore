@@ -13,7 +13,7 @@ export default function Footer({ onOpenAbout, onOpenFeedback }) {
           {/* Brand & Slogan */}
           <div className="space-y-1">
             <div className="flex items-center justify-center md:justify-start gap-2">
-              <span className="font-serif text-xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">
+              <span className="font-editorial text-2xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">
                 CupidScore
               </span>
               <span className="text-xs px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 font-medium">
@@ -21,7 +21,7 @@ export default function Footer({ onOpenAbout, onOpenFeedback }) {
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 font-light">
-              Pythagorean Numerology & Cosmic Chemistry • Pure client-side calculations
+              Pythagorean Numerology & Cosmic Chemistry • 100% Client-Side Privacy
             </p>
           </div>
 

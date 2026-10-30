@@ -32,21 +32,21 @@ export default function CoupleSongModal({ isOpen, onClose, initialPercent = 85 }
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-500 text-white mb-3 shadow-md shadow-pink-500/25">
             <Music className="w-6 h-6" />
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold">
+          <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
             Couple's Anthem
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
             The soundtrack matched to your romantic frequency
           </p>
         </div>
 
         {/* Score selector slider */}
-        <div className="mb-6 p-4 rounded-2xl bg-rose-50/50 dark:bg-slate-800/50 border border-rose-100 dark:border-rose-900/30">
+        <div className="mb-5 p-4 rounded-2xl bg-rose-50/50 dark:bg-slate-800/50 border border-rose-100 dark:border-rose-900/30">
           <div className="flex justify-between items-center mb-2">
             <label htmlFor="scoreRange" className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300">
               Love Percentage Frequency:
             </label>
-            <span className="font-serif font-bold text-rose-600 dark:text-rose-400 text-base">
+            <span className="font-editorial font-bold text-rose-600 dark:text-rose-400 text-lg">
               {inputScore}%
             </span>
           </div>
@@ -62,9 +62,9 @@ export default function CoupleSongModal({ isOpen, onClose, initialPercent = 85 }
         </div>
 
         {/* Song Card */}
-        <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-rose-50/80 to-pink-50/80 dark:from-slate-800/80 dark:to-slate-850/80 border border-rose-200/60 dark:border-rose-900/40 p-5 space-y-4">
+        <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-rose-50/80 to-pink-50/80 dark:from-slate-800/80 dark:to-slate-850/80 border border-rose-200/60 dark:border-rose-900/40 p-4 sm:p-5 space-y-4">
           {/* Thumbnail with play overlay */}
-          <div className="relative rounded-xl overflow-hidden group shadow-md aspect-video">
+          <div className="relative rounded-xl overflow-hidden group shadow-md aspect-video max-h-56 mx-auto">
             <img
               src={`https://img.youtube.com/vi/${song.videoId}/hqdefault.jpg`}
               alt={song.title}
@@ -76,8 +76,8 @@ export default function CoupleSongModal({ isOpen, onClose, initialPercent = 85 }
               rel="noopener noreferrer"
               className="absolute inset-0 bg-slate-950/40 flex items-center justify-center group-hover:bg-slate-950/50 transition-colors"
             >
-              <div className="w-14 h-14 rounded-full bg-rose-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <Play className="w-6 h-6 fill-current ml-1" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-rose-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-1" />
               </div>
             </a>
           </div>
@@ -86,13 +86,13 @@ export default function CoupleSongModal({ isOpen, onClose, initialPercent = 85 }
             <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-pink-100 dark:bg-pink-950/60 text-pink-700 dark:text-pink-300">
               {song.tag}
             </span>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100">
+            <h3 className="font-editorial text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100">
               {song.title}
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 font-medium">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
               by {song.artist}
             </p>
-            <p className="text-xs italic text-rose-700 dark:text-rose-300 pt-1">
+            <p className="font-cormorant text-base italic text-rose-800 dark:text-rose-200 pt-1">
               {song.quote}
             </p>
           </div>

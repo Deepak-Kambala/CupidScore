@@ -45,13 +45,13 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
     // Title / Brand
     ctx.fillStyle = '#fbcfe8';
-    ctx.font = 'bold 20px "Cinzel", Georgia, serif';
+    ctx.font = 'bold 20px "Italiana", "Playfair Display", Georgia, serif';
     ctx.letterSpacing = '4px';
     ctx.fillText('CUPIDSCORE • SOUL CHEMISTRY', width / 2, 110);
 
     // Couple Names
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 46px "Playfair Display", Georgia, serif';
+    ctx.font = 'bold 48px "Italiana", "Playfair Display", Georgia, serif';
     ctx.fillText(`${result.name1} & ${result.name2}`, width / 2, 185);
 
     // Circular Progress Ring
@@ -81,7 +81,7 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
     // Center Percentage
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 84px "Playfair Display", Georgia, serif';
+    ctx.font = 'bold 88px "Italiana", "Playfair Display", Georgia, serif';
     ctx.fillText(`${result.percent}%`, centerX, centerY - 10);
 
     ctx.fillStyle = '#fda4af';
@@ -90,12 +90,12 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
     // Subtitle & Summary
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 30px "Playfair Display", Georgia, serif';
+    ctx.font = 'bold 32px "Italiana", "Playfair Display", Georgia, serif';
     ctx.fillText(result.details.tier, width / 2, 600);
 
     // Word wrap summary
-    ctx.fillStyle = '#e2e8f0';
-    ctx.font = 'italic 22px Georgia, serif';
+    ctx.fillStyle = '#fce7f3';
+    ctx.font = 'italic 24px "Cormorant Garamond", Georgia, serif';
     const words = result.details.summary.split(' ');
     let line = '';
     let y = 650;
@@ -157,7 +157,7 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white mb-2 shadow-md shadow-rose-500/25">
             <Share2 className="w-6 h-6" />
           </div>
-          <h2 className="font-serif text-2xl font-bold">
+          <h2 className="font-editorial text-2xl font-bold">
             Shareable Love Card
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">

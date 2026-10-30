@@ -20,7 +20,7 @@ export default function AboutModal({ isOpen, onClose }) {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 text-white mb-2 shadow-md shadow-rose-500/25">
             <Info className="w-6 h-6" />
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold">
+          <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
             About Love Alchemy
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -28,10 +28,10 @@ export default function AboutModal({ isOpen, onClose }) {
           </p>
         </div>
 
-        <div className="space-y-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <div className="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-light">
           {/* Section 1 */}
           <div className="p-4 rounded-2xl bg-rose-50/50 dark:bg-slate-800/50 border border-rose-100 dark:border-rose-900/30 space-y-2">
-            <h3 className="font-serif font-bold text-base text-rose-700 dark:text-rose-300 flex items-center gap-2">
+            <h3 className="font-editorial font-bold text-lg text-rose-700 dark:text-rose-300 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-500" />
               <span>How the Calculation Works</span>
             </h3>
@@ -45,7 +45,7 @@ export default function AboutModal({ isOpen, onClose }) {
 
           {/* Section 2 */}
           <div className="p-4 rounded-2xl bg-pink-50/50 dark:bg-slate-800/50 border border-pink-100 dark:border-pink-900/30 space-y-2">
-            <h3 className="font-serif font-bold text-base text-pink-700 dark:text-pink-300 flex items-center gap-2">
+            <h3 className="font-editorial font-bold text-lg text-pink-700 dark:text-pink-300 flex items-center gap-2">
               <Award className="w-4 h-4 text-pink-500" />
               <span>The Master Numbers (11, 22, 33)</span>
             </h3>
@@ -56,7 +56,7 @@ export default function AboutModal({ isOpen, onClose }) {
 
           {/* Section 3 */}
           <div className="p-4 rounded-2xl bg-emerald-50/50 dark:bg-slate-800/50 border border-emerald-100 dark:border-emerald-900/30 space-y-2">
-            <h3 className="font-serif font-bold text-base text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
+            <h3 className="font-editorial font-bold text-lg text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
               <span>100% Client-Side & Private</span>
             </h3>

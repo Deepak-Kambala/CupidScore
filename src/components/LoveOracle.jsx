@@ -37,14 +37,14 @@ export default function LoveOracle({ moodKey = 'dreamy', names = null }) {
             <span className="text-2xl animate-bounce" style={{ animationDelay: '0.2s' }}>✨</span>
           </div>
 
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-200 via-pink-100 to-amber-200 bg-clip-text text-transparent mb-4">
+          <h2 className="font-editorial text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-200 via-pink-100 to-amber-200 bg-clip-text text-transparent mb-4">
             The Love Oracle Whispers...
           </h2>
 
           {/* Parchment Box */}
-          <div className="w-full max-w-2xl bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-rose-400/20 my-2">
+          <div className="w-full max-w-2xl bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-7 border border-rose-400/20 my-2">
             <p
-              className={`font-serif italic text-lg sm:text-xl text-rose-100/90 leading-relaxed transition-opacity duration-300 ${
+              className={`font-cormorant italic text-lg sm:text-2xl text-rose-100/95 leading-relaxed transition-opacity duration-300 ${
                 fade ? 'opacity-100' : 'opacity-0'
               }`}
             >

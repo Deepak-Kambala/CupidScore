@@ -32,7 +32,7 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white mb-3 shadow-md shadow-rose-500/25">
             <Users className="w-6 h-6" />
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold">
+          <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
             Numerological Archetypes
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -50,7 +50,7 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                     <span className="text-xs uppercase tracking-wider font-semibold text-rose-600 dark:text-rose-400">
                       {synergy.tag}
                     </span>
-                    <h3 className="font-serif text-lg font-bold text-slate-800 dark:text-slate-100">
+                    <h3 className="font-editorial text-lg font-bold text-slate-800 dark:text-slate-100">
                       Archetype Synergy: {synergy.score}%
                     </h3>
                     <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
@@ -74,7 +74,7 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-rose-500">
                       {valid1} • Vibration #{profile1.numerologyNumber}
                     </span>
-                    <h4 className="font-serif text-xl font-bold">{profile1.name}</h4>
+                    <h4 className="font-editorial text-xl font-bold">{profile1.name}</h4>
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                   <h5 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     Love Style & Desires
                   </h5>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                  <p className="font-cormorant text-base text-slate-700 dark:text-slate-200 leading-relaxed italic">
                     "{profile1.loveStyle}"
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-pink-500">
                       {valid2} • Vibration #{profile2.numerologyNumber}
                     </span>
-                    <h4 className="font-serif text-xl font-bold">{profile2.name}</h4>
+                    <h4 className="font-editorial text-xl font-bold">{profile2.name}</h4>
                   </div>
                 </div>
 
@@ -147,7 +147,7 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                   <h5 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     Love Style & Desires
                   </h5>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                  <p className="font-cormorant text-base text-slate-700 dark:text-slate-200 leading-relaxed italic">
                     "{profile2.loveStyle}"
                   </p>
                 </div>

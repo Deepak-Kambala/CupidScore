@@ -1,10 +1,59 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --romantic-rose: #e11d48;
+    --romantic-blush: #ffe4e6;
+    --romantic-gold: #d97706;
+  }
+
   html {
     scroll-behavior: smooth;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100dvh;
+  }
+}
+
+.font-editorial {
+  font-family: 'Italiana', 'Playfair Display', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Luxury Paper Texture effect for Love Letter */
+.stationery-parchment {
+  background-color: #fbf7ee;
+  background-image: radial-gradient(#e5dac1 0.75px, transparent 0.75px), radial-gradient(#e5dac1 0.75px, #fbf7ee 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.stationery-rose {
+  background: linear-gradient(135deg, #fff5f6 0%, #ffeef1 50%, #fff0f3 100%);
+  box-shadow: inset 0 0 40px rgba(244, 63, 94, 0.05);
+}
+
+.stationery-midnight {
+  background: radial-gradient(circle at 50% 20%, #1e132b 0%, #11091a 100%);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Wax seal realism */
+.wax-seal {
+  background: radial-gradient(circle at 35% 35%, #e11d48, #9f1239 70%, #4c0519 100%);
+  box-shadow: 0 4px 14px rgba(159, 18, 57, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.35), inset 0 -3px 4px rgba(0, 0, 0, 0.4);
+}
+
+.wax-seal-gold {
+  background: radial-gradient(circle at 35% 35%, #fbbf24, #d97706 70%, #78350f 100%);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.5), inset 0 -3px 4px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes shake {
@@ -18,18 +67,18 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.98) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom scrollbar for modals & history */
+/* Custom delicate scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,11 +86,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(244, 63, 94, 0.2);
+  background: rgba(225, 29, 72, 0.2);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(244, 63, 94, 0.4);
+  background: rgba(225, 29, 72, 0.4);
 }
-

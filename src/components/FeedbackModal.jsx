@@ -51,7 +51,7 @@ export default function FeedbackModal({ isOpen, onClose, feedbacks = [], onFeedb
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white mb-2 shadow-md shadow-rose-500/25">
             <MessageSquare className="w-6 h-6" />
           </div>
-          <h2 className="font-serif text-2xl font-bold">
+          <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
             Share Your Thoughts
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">

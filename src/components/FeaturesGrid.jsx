@@ -65,25 +65,25 @@ export default function FeaturesGrid({
         <span className="text-xs font-semibold uppercase tracking-widest text-rose-500">
           Romantic Experiences
         </span>
-        <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-100 mt-1">
+        <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-100 mt-1">
           Designed with Pure Devotion
         </h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 font-light">
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 font-light">
           Everything you need to celebrate, deepen, and enjoy your connection
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {features.map((f, i) => (
           <div
             key={i}
-            className="group relative rounded-3xl p-6 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border border-rose-100 dark:border-rose-950/40 hover:border-rose-300 dark:hover:border-rose-800 transition-all duration-300 hover:shadow-xl hover:shadow-rose-500/5 hover:-translate-y-1 flex flex-col justify-between"
+            className="group relative rounded-3xl p-5 sm:p-6 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border border-rose-100 dark:border-rose-950/40 hover:border-rose-300 dark:hover:border-rose-800 transition-all duration-300 hover:shadow-xl hover:shadow-rose-500/5 hover:-translate-y-1 flex flex-col justify-between"
           >
             <div>
               <div className="w-11 h-11 rounded-2xl bg-rose-50 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 {f.icon}
               </div>
-              <h3 className="font-serif text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">
+              <h3 className="font-editorial text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
                 {f.title}
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-light">

@@ -52,7 +52,7 @@ export default function Navbar({
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-serif text-xl sm:text-2xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 dark:from-rose-400 dark:to-pink-300 bg-clip-text text-transparent">
+                <span className="font-editorial text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 dark:from-rose-400 dark:to-pink-300 bg-clip-text text-transparent tracking-tight">
                   CupidScore
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-rose-100 text-rose-700 dark:bg-rose-900/60 dark:text-rose-300 border border-rose-200/60 dark:border-rose-800/40 hidden sm:inline-block">
