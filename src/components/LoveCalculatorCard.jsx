@@ -156,7 +156,7 @@ export default function LoveCalculatorCard({
                 type="text"
                 value={name1}
                 onChange={(e) => setName1(e.target.value)}
-                placeholder="e.g. Romeo"
+                placeholder="Enter your name"
                 maxLength={40}
                 className="w-full px-4 py-3 sm:py-3.5 pl-11 rounded-2xl bg-rose-50/50 dark:bg-slate-800/70 border border-rose-200 dark:border-rose-900/40 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-500/70 focus:border-rose-500 transition-all font-medium text-sm sm:text-base shadow-2xs"
               />
@@ -185,7 +185,7 @@ export default function LoveCalculatorCard({
                 type="text"
                 value={name2}
                 onChange={(e) => setName2(e.target.value)}
-                placeholder="e.g. Juliet"
+                placeholder="Enter partner's name"
                 maxLength={40}
                 className="w-full px-4 py-3 sm:py-3.5 pl-11 rounded-2xl bg-rose-50/50 dark:bg-slate-800/70 border border-rose-200 dark:border-rose-900/40 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-500/70 focus:border-rose-500 transition-all font-medium text-sm sm:text-base shadow-2xs"
               />
@@ -422,45 +422,13 @@ export default function LoveCalculatorCard({
                 </div>
               </div>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-2 py-3">
                 <h3 className="font-editorial text-xl font-bold text-slate-800 dark:text-slate-200">
                   Ready to test your chemistry?
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-light">
-                  Type your names above or tap a legendary pair to see Pythagorean numerology in action:
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-light max-w-md mx-auto md:mx-0">
+                  Enter both names above and click <span className="font-medium text-rose-500 dark:text-rose-400">Calculate Compatibility</span> to reveal your planetary alignment and cosmic synergy.
                 </p>
-                <div className="pt-2 flex flex-wrap gap-1.5 justify-center md:justify-start">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setName1('Romeo');
-                      setName2('Juliet');
-                    }}
-                    className="px-3 py-1.5 rounded-xl text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50/80 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer transition-all"
-                  >
-                    Romeo & Juliet
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setName1('Elizabeth');
-                      setName2('Darcy');
-                    }}
-                    className="px-3 py-1.5 rounded-xl text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50/80 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer transition-all"
-                  >
-                    Elizabeth & Darcy
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setName1('Lancelot');
-                      setName2('Guinevere');
-                    }}
-                    className="px-3 py-1.5 rounded-xl text-xs font-medium text-rose-700 dark:text-rose-300 bg-rose-50/80 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 border border-rose-200/60 dark:border-rose-900/40 cursor-pointer transition-all"
-                  >
-                    Lancelot & Guinevere
-                  </button>
-                </div>
               </div>
             )}
           </div>
