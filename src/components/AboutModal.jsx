@@ -21,10 +21,10 @@ export default function AboutModal({ isOpen, onClose }) {
             <Info className="w-6 h-6" />
           </div>
           <h2 className="font-editorial text-2xl sm:text-3xl font-bold">
-            About Love Alchemy
+            About CupidScore
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Ancient Pythagorean science combined with modern romantic magic
+            Understanding the math, chemistry, and romance behind your scores
           </p>
         </div>
 

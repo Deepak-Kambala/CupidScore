@@ -55,12 +55,9 @@ export default function Navbar({
                 <span className="font-editorial text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 dark:from-rose-400 dark:to-pink-300 bg-clip-text text-transparent tracking-tight">
                   CupidScore
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-rose-100 text-rose-700 dark:bg-rose-900/60 dark:text-rose-300 border border-rose-200/60 dark:border-rose-800/40 hidden sm:inline-block">
-                  Love Alchemy
-                </span>
               </div>
               <p className="text-[10px] text-rose-800/60 dark:text-rose-200/50 tracking-wider uppercase -mt-0.5">
-                Numerology & Romantic Chemistry
+                Romantic Chemistry Calculator
               </p>
             </div>
           </div>
@@ -253,7 +250,7 @@ export default function Navbar({
               className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-700 dark:text-slate-200 hover:bg-rose-50 dark:hover:bg-rose-950/40"
             >
               <Info className="w-4 h-4 text-rose-500" />
-              <span>About & Pythagorean Science</span>
+              <span>About & How It Works</span>
             </button>
 
             <div className="pt-2 flex items-center justify-around border-t border-rose-100 dark:border-rose-950/60">

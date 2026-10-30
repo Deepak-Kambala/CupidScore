@@ -139,14 +139,6 @@ export default function LoveCalculatorCard({
 
   return (
     <div className="relative w-full max-w-4xl mx-auto backdrop-blur-xl bg-white/90 dark:bg-slate-900/90 rounded-3xl p-5 sm:p-8 md:p-10 shadow-2xl shadow-rose-900/5 border border-rose-200/70 dark:border-rose-950/50 transition-all duration-300">
-      {/* Decorative top accent badge */}
-      <div className="flex justify-center mb-4 sm:mb-6">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider uppercase bg-rose-100/70 dark:bg-rose-950/50 text-rose-800 dark:text-rose-300 border border-rose-200/80 dark:border-rose-900/50">
-          <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin" style={{ animationDuration: '6s' }} />
-          Pythagorean Numerology & Soul Compatibility
-        </span>
-      </div>
-
       <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8">
         <h1 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
           Calculate Your <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">Love Synergy</span>

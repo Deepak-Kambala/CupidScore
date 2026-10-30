@@ -117,7 +117,7 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
     // Footer Watermark
     ctx.fillStyle = '#94a3b8';
     ctx.font = '16px sans-serif';
-    ctx.fillText('Calculated with Pythagorean Numerology • Love Alchemy', width / 2, height - 85);
+    ctx.fillText('CupidScore • Romantic Chemistry & Soul Compatibility', width / 2, height - 85);
   }, [result]);
 
   const handleDownload = () => {
