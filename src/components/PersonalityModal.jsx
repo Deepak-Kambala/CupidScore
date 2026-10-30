@@ -74,9 +74,12 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-rose-500">
-                      {valid1} • Soul Vibration
+                      {valid1} • Vibration #{profile1.numerologyNumber}
                     </span>
                     <h4 className="font-editorial text-xl font-bold">{profile1.name}</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      <span className="font-semibold text-rose-600 dark:text-rose-400">{profile1.graha} ({profile1.planet})</span> • {profile1.element}
+                    </p>
                   </div>
                 </div>
 
@@ -125,9 +128,12 @@ export default function PersonalityModal({ isOpen, onClose, name1, name2, suppor
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-pink-500">
-                      {valid2} • Soul Vibration
+                      {valid2} • Vibration #{profile2.numerologyNumber}
                     </span>
                     <h4 className="font-editorial text-xl font-bold">{profile2.name}</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      <span className="font-semibold text-pink-600 dark:text-pink-400">{profile2.graha} ({profile2.planet})</span> • {profile2.element}
+                    </p>
                   </div>
                 </div>
 

@@ -19,7 +19,7 @@ import AboutModal from './components/AboutModal';
 import {
   nameToNumber,
   combineNumbers,
-  mapToPercent,
+  calculateVedicSynergy,
   getScoreDetails,
   isValidName,
 } from './data/numerology';
@@ -82,17 +82,21 @@ export default function App() {
         const num1 = nameToNumber(urlN1, true);
         const num2 = nameToNumber(urlN2, true);
         const combined = combineNumbers(num1, num2, true);
-        const calculatedPercent = mapToPercent(combined, num1, num2);
-        const details = getScoreDetails(calculatedPercent);
+        const vedic = calculateVedicSynergy(num1, num2, combined);
+        const details = getScoreDetails(vedic.percent);
 
         setResult({
           name1: urlN1,
           name2: urlN2,
-          percent: calculatedPercent,
+          percent: vedic.percent,
           num1,
           num2,
           combined,
           details,
+          pillars: vedic.pillars,
+          graha1: vedic.graha1,
+          graha2: vedic.graha2,
+          maitriScore: vedic.maitriScore,
           date: new Date().toISOString(),
         });
       }

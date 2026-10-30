@@ -11,9 +11,9 @@ export default function FeaturesGrid({
   const features = [
     {
       icon: <Sparkles className="w-5 h-5 text-rose-500" />,
-      title: 'Pythagorean Numerology',
-      desc: 'Authentic mathematical vibrational analysis rooted in ancient Pythagorean principles.',
-      actionText: 'Learn the Science',
+      title: 'Vedic Numerology & Tattvas',
+      desc: 'Authentic vibrational analysis governed by the Navagrahas and Pancha Mahabhuta (Panchangam elements).',
+      actionText: 'Explore Vedic Science',
       onClick: onOpenAbout,
       gradient: 'from-rose-500/10 to-pink-500/10',
     },

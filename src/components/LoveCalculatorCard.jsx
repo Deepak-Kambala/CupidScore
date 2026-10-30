@@ -13,7 +13,7 @@ import {
   isValidName,
   nameToNumber,
   combineNumbers,
-  mapToPercent,
+  calculateVedicSynergy,
   getScoreDetails,
 } from '../data/numerology';
 import { playRomanticChime, playHeartbeat } from '../utils/sound';
@@ -91,7 +91,8 @@ export default function LoveCalculatorCard({
       const num1 = nameToNumber(clean1, supportMaster);
       const num2 = nameToNumber(clean2, supportMaster);
       const combined = combineNumbers(num1, num2, supportMaster);
-      let calculatedPercent = mapToPercent(combined, num1, num2);
+      const vedic = calculateVedicSynergy(num1, num2, combined);
+      let calculatedPercent = vedic.percent;
 
       if (allowJitter) {
         const jitter = Math.floor(Math.random() * 11) - 5;
@@ -99,12 +100,6 @@ export default function LoveCalculatorCard({
       }
 
       const details = getScoreDetails(calculatedPercent);
-
-      // Authentic 4-pillar compatibility calculations based on sub-harmonies
-      const emotionalResonance = Math.min(100, Math.max(20, calculatedPercent + ((num1 * 3) % 11) - 5));
-      const electricChemistry = Math.min(100, Math.max(25, calculatedPercent + ((num2 * 4) % 13) - 6));
-      const intellectualFlow = Math.min(100, Math.max(20, calculatedPercent + (((num1 + num2) * 2) % 9) - 4));
-      const enduringHarmony = Math.min(100, Math.max(30, calculatedPercent + ((combined * 5) % 11) - 5));
 
       const newResult = {
         name1: clean1,
@@ -114,12 +109,10 @@ export default function LoveCalculatorCard({
         num2,
         combined,
         details,
-        pillars: {
-          emotional: emotionalResonance,
-          chemistry: electricChemistry,
-          intellectual: intellectualFlow,
-          enduring: enduringHarmony,
-        },
+        pillars: vedic.pillars,
+        graha1: vedic.graha1,
+        graha2: vedic.graha2,
+        maitriScore: vedic.maitriScore,
         date: new Date().toISOString(),
       };
 
@@ -314,6 +307,19 @@ export default function LoveCalculatorCard({
                 <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">
                   {result.name1} & {result.name2}
                 </h3>
+
+                {/* Vedic Graha & Tattva (Panchangam Element) synergy */}
+                {result.graha1 && result.graha2 && (
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 text-[11px] font-medium text-slate-600 dark:text-slate-300">
+                    <span className="px-2.5 py-0.5 rounded-full bg-rose-50 dark:bg-slate-800 text-rose-700 dark:text-rose-300 border border-rose-200/60 dark:border-rose-900/40">
+                      {result.name1}: {result.graha1.graha} • {result.graha1.element}
+                    </span>
+                    <span className="text-slate-400">✦</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-pink-50 dark:bg-slate-800 text-pink-700 dark:text-pink-300 border border-pink-200/60 dark:border-rose-900/40">
+                      {result.name2}: {result.graha2.graha} • {result.graha2.element}
+                    </span>
+                  </div>
+                )}
 
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-light font-cormorant italic text-base">
                   "{result.details.summary}"

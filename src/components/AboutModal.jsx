@@ -33,25 +33,43 @@ export default function AboutModal({ isOpen, onClose }) {
           <div className="p-4 rounded-2xl bg-rose-50/50 dark:bg-slate-800/50 border border-rose-100 dark:border-rose-900/30 space-y-2">
             <h3 className="font-editorial font-bold text-lg text-rose-700 dark:text-rose-300 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-500" />
-              <span>How the Calculation Works</span>
+              <span>Vedic Sankhya Shastra & Panchangam Tattvas</span>
             </h3>
             <p>
-              In Pythagorean numerology, every letter from A to Z carries an inherent vibrational frequency corresponding to numbers 1 through 9. When you calculate love compatibility, each name is reduced to its foundational root number or sacred Master Number (11, 22, 33).
+              In traditional Hindu numerology (Sankhya Shastra) and Panchangam wisdom, every sound and letter carries an inherent vibrational resonance governed by the Navagrahas (Nine Celestial Planets) and the Pancha Mahabhutas (Five Elements):
             </p>
-            <p>
-              The composite resonance between both names produces an authentic, repeatable compatibility score reflecting communication, empathy, passion, and spiritual synergy.
-            </p>
+            <ul className="list-disc list-inside space-y-1 text-xs opacity-90">
+              <li><strong>Surya (Sun) & Mangala (Mars)</strong>: Agni Tattva (Fire) — Radiant courage and passionate vitality.</li>
+              <li><strong>Chandra (Moon) & Shukra (Venus)</strong>: Jala Tattva (Water) — Pure empathy, romance, and nurturing love.</li>
+              <li><strong>Budha (Mercury)</strong>: Prithvi Tattva (Earth) — Intellect, communication, and witty grounding.</li>
+              <li><strong>Rahu & Shani (Saturn)</strong>: Vayu Tattva (Air) — Unconventional ambition and steadfast endurance.</li>
+              <li><strong>Guru (Jupiter) & Ketu</strong>: Akasha Tattva (Ether) — Dharma, spiritual expansion, and soul wisdom.</li>
+            </ul>
           </div>
 
           {/* Section 2 */}
           <div className="p-4 rounded-2xl bg-pink-50/50 dark:bg-slate-800/50 border border-pink-100 dark:border-pink-900/30 space-y-2">
             <h3 className="font-editorial font-bold text-lg text-pink-700 dark:text-pink-300 flex items-center gap-2">
               <Award className="w-4 h-4 text-pink-500" />
-              <span>The Master Numbers (11, 22, 33)</span>
+              <span>Graha Maitri & Ashta Koota Compatibility</span>
             </h3>
             <p>
-              In numerology, Master Numbers represent intensified potential and profound twin-flame magnetism. When two individuals share master vibrations, the synergy reaches transcendental soulmate brackets.
+              Rather than generic arbitrary math, CupidScore computes authentic <em>Graha Maitri</em> (Planetary Friendship: Mitra, Sama, and Shatru) paired with elemental synergy to evaluate four classical compatibility dimensions:
             </p>
+            <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+              <div className="p-2 rounded-lg bg-white/60 dark:bg-slate-700/60 border border-rose-100 dark:border-slate-600">
+                <strong>Manasika (Emotional)</strong>: Heart-to-heart empathy and mental harmony.
+              </div>
+              <div className="p-2 rounded-lg bg-white/60 dark:bg-slate-700/60 border border-rose-100 dark:border-slate-600">
+                <strong>Rati / Kama (Chemistry)</strong>: Electric passion and natural attraction.
+              </div>
+              <div className="p-2 rounded-lg bg-white/60 dark:bg-slate-700/60 border border-rose-100 dark:border-slate-600">
+                <strong>Buddhi (Mind Sync)</strong>: Shared values, intellect, and dharmic alignment.
+              </div>
+              <div className="p-2 rounded-lg bg-white/60 dark:bg-slate-700/60 border border-rose-100 dark:border-slate-600">
+                <strong>Aayu (Longevity)</strong>: Lifelong resilience, loyalty, and enduring harmony.
+              </div>
+            </div>
           </div>
 
           {/* Section 3 */}
