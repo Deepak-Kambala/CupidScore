@@ -191,7 +191,7 @@ export default function LoveSpinnerModal({ isOpen, onClose, soundEnabled, confet
           <button
             onClick={spinWheel}
             disabled={isSpinning}
-            className="px-8 py-3 rounded-2xl font-bold text-white text-xs sm:text-sm bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-lg shadow-rose-500/30 transition-all cursor-pointer disabled:opacity-50 min-w-[180px] tracking-wide"
+            className="group px-8 py-3 rounded-2xl font-bold text-white text-xs sm:text-sm btn-romantic-primary cursor-pointer disabled:opacity-50 min-w-[180px] tracking-wide"
           >
             {isSpinning ? 'Spinning Destiny...' : 'Spin Wheel'}
           </button>

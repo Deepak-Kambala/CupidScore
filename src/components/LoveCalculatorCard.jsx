@@ -228,19 +228,19 @@ export default function LoveCalculatorCard({
           <button
             type="submit"
             disabled={isCalculating}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl font-semibold text-white text-xs sm:text-sm bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-lg shadow-rose-500/20 transition-all cursor-pointer min-h-[46px] min-w-[210px] tracking-wide"
+            className="group flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl font-semibold text-white text-xs sm:text-sm btn-romantic-primary cursor-pointer min-h-[46px] min-w-[210px] tracking-wide"
           >
-            <Heart className={`w-4 h-4 fill-current ${isCalculating ? 'animate-spin' : 'opacity-90'}`} />
+            <Heart className={`w-4 h-4 fill-current transition-transform duration-300 ${isCalculating ? 'animate-spin' : 'btn-icon-pulse'}`} />
             <span>{isCalculating ? 'Analyzing Vibrations...' : 'Calculate Compatibility'}</span>
           </button>
 
           <button
             type="button"
             onClick={onReset}
-            className="flex items-center justify-center gap-1.5 px-4 sm:px-5 py-3.5 rounded-2xl font-semibold text-xs sm:text-sm text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-95 transition-all cursor-pointer border border-slate-200 dark:border-slate-700 min-h-[46px]"
+            className="group flex items-center justify-center gap-1.5 px-4 sm:px-5 py-3.5 rounded-2xl font-semibold text-xs sm:text-sm text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 btn-romantic-secondary border border-slate-200 dark:border-slate-700 min-h-[46px] cursor-pointer"
             title="Reset names"
           >
-            <RotateCcw className="w-4 h-4 text-slate-500" />
+            <RotateCcw className="w-4 h-4 text-slate-500 btn-icon-spin" />
             <span>Reset</span>
           </button>
         </div>
@@ -397,25 +397,25 @@ export default function LoveCalculatorCard({
                 <div className="pt-2 flex flex-wrap gap-2 justify-center md:justify-start">
                   <button
                     onClick={onOpenShareCard}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 active:scale-95 shadow-md shadow-rose-500/20 transition-all cursor-pointer"
+                    className="group flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white btn-romantic-primary cursor-pointer tracking-wide"
                   >
-                    <Download className="w-3.5 h-3.5" />
+                    <Download className="w-3.5 h-3.5 btn-icon-bounce" />
                     <span>Download Love Card</span>
                   </button>
 
                   <button
                     onClick={onOpenPersonality}
-                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 bg-rose-50 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 active:scale-95 transition-all border border-rose-200/60 dark:border-slate-700"
+                    className="group flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 bg-rose-50/80 dark:bg-slate-800 btn-romantic-pill border border-rose-200/60 dark:border-slate-700 cursor-pointer"
                   >
-                    <Users className="w-3.5 h-3.5 text-rose-500" />
+                    <Users className="w-3.5 h-3.5 text-rose-500 btn-icon-bounce" />
                     <span>Archetypes</span>
                   </button>
 
                   <button
                     onClick={onOpenSong}
-                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 bg-rose-50 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 active:scale-95 transition-all border border-rose-200/60 dark:border-slate-700"
+                    className="group flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 bg-rose-50/80 dark:bg-slate-800 btn-romantic-pill border border-rose-200/60 dark:border-slate-700 cursor-pointer"
                   >
-                    <Music className="w-3.5 h-3.5 text-pink-500" />
+                    <Music className="w-3.5 h-3.5 text-pink-500 btn-icon-pulse" />
                     <span>Love Song</span>
                   </button>
                 </div>

@@ -638,17 +638,17 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button
               onClick={handleDownload}
-              className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-md shadow-rose-500/25 transition-all cursor-pointer tracking-wide"
+              className="group flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold text-xs text-white btn-romantic-primary cursor-pointer tracking-wide"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-4 h-4 btn-icon-bounce" />
               <span>Download Ultra-HD (PNG)</span>
             </button>
 
             <button
               onClick={handleCopyImage}
-              className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 border border-slate-200 dark:border-slate-700 cursor-pointer transition-all"
+              className="group flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 btn-romantic-secondary border border-slate-200 dark:border-slate-700 cursor-pointer"
             >
-              {copiedImage ? <Check className="w-4 h-4 text-emerald-500" /> : <ImageIcon className="w-4 h-4 text-slate-500" />}
+              {copiedImage ? <Check className="w-4 h-4 text-emerald-500" /> : <ImageIcon className="w-4 h-4 text-slate-500 btn-icon-bounce" />}
               <span>{copiedImage ? 'Image Copied to Clipboard!' : 'Copy Image to Clipboard'}</span>
             </button>
           </div>
@@ -656,9 +656,9 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
           <div className="flex gap-2">
             <button
               onClick={handleCopyLink}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 border border-slate-200 dark:border-slate-700 cursor-pointer"
+              className="group flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/80 btn-romantic-pill border border-slate-200 dark:border-slate-700 cursor-pointer"
             >
-              {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+              {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-slate-500 btn-icon-bounce" />}
               <span>{copiedLink ? 'Link Copied' : 'Copy Direct Link'}</span>
             </button>
 

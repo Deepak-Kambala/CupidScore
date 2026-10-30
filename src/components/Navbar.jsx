@@ -64,10 +64,10 @@ export default function Navbar({
           <nav className="hidden lg:flex items-center gap-1.5">
             <button
               onClick={onOpenHistory}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="View Calculation History"
             >
-              <History className="w-3.5 h-3.5 text-rose-500" />
+              <History className="w-3.5 h-3.5 text-rose-500 btn-icon-spin" />
               <span>History</span>
               {historyCount > 0 && (
                 <span className="ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] bg-rose-500 text-white font-semibold">
@@ -78,55 +78,55 @@ export default function Navbar({
 
             <button
               onClick={onOpenPersonality}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="Personality Archetypes"
             >
-              <Users className="w-3.5 h-3.5 text-rose-500" />
+              <Users className="w-3.5 h-3.5 text-rose-500 btn-icon-bounce" />
               <span>Archetypes</span>
             </button>
 
             <button
               onClick={onOpenSong}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="Couple's Love Song"
             >
-              <Music className="w-3.5 h-3.5 text-pink-500" />
+              <Music className="w-3.5 h-3.5 text-pink-500 btn-icon-pulse" />
               <span>Love Song</span>
             </button>
 
             <button
               onClick={onOpenLetter}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="Love Letter Generator"
             >
-              <Mail className="w-3.5 h-3.5 text-rose-500" />
+              <Mail className="w-3.5 h-3.5 text-rose-500 btn-icon-bounce" />
               <span>Love Letter</span>
             </button>
 
             <button
               onClick={onOpenSpinner}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="Wheel of Love Game"
             >
-              <Disc className="w-3.5 h-3.5 text-amber-500" />
+              <Disc className="w-3.5 h-3.5 text-amber-500 btn-icon-spin" />
               <span>Spinner</span>
             </button>
 
             <button
               onClick={onOpenFeedback}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="Give Feedback"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-rose-500" />
+              <MessageSquare className="w-3.5 h-3.5 text-rose-500 btn-icon-bounce" />
               <span>Feedback</span>
             </button>
 
             <button
               onClick={onOpenAbout}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 transition-all border border-transparent hover:border-rose-200/60"
+              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50/80 dark:hover:bg-rose-950/40 btn-romantic-pill border border-transparent cursor-pointer"
               title="About & How It Works"
             >
-              <Info className="w-3.5 h-3.5 text-rose-500" />
+              <Info className="w-3.5 h-3.5 text-rose-500 btn-icon-pulse" />
               <span>About</span>
             </button>
 

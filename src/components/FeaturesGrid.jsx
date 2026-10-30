@@ -94,10 +94,10 @@ export default function FeaturesGrid({
             <div className="mt-5 pt-3 border-t border-rose-50 dark:border-slate-800/80">
               <button
                 onClick={f.onClick}
-                className="text-xs font-semibold text-rose-600 dark:text-rose-400 group-hover:text-rose-700 flex items-center gap-1 cursor-pointer"
+                className="w-full justify-between py-2 px-3.5 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 group-hover:text-rose-700 bg-rose-50/60 dark:bg-slate-800/60 btn-romantic-pill flex items-center cursor-pointer"
               >
                 <span>{f.actionText}</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                <span className="transition-transform group-hover:translate-x-1.5 font-bold">→</span>
               </button>
             </div>
           </div>

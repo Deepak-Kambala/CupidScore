@@ -413,17 +413,17 @@ export default function LoveLetterModal({ isOpen, onClose, defaultTo = '', defau
               <div className="flex gap-2">
                 <button
                   onClick={handleDownloadImage}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 hover:from-rose-500 hover:to-pink-600 active:scale-95 shadow-md shadow-rose-500/25 transition-all cursor-pointer"
+                  className="group flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold text-xs text-white btn-romantic-primary cursor-pointer tracking-wide"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="w-4 h-4 btn-icon-bounce" />
                   <span>Download Image (PNG)</span>
                 </button>
 
                 <button
                   onClick={handleCopyText}
-                  className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition-all cursor-pointer border border-slate-200 dark:border-slate-700"
+                  className="group flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 btn-romantic-secondary cursor-pointer border border-slate-200 dark:border-slate-700"
                 >
-                  {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4 btn-icon-bounce" />}
                   <span>{copied ? 'Copied' : 'Copy Text'}</span>
                 </button>
               </div>
