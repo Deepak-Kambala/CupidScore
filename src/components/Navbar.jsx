@@ -47,7 +47,7 @@ export default function Navbar({
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
           <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <CupidLogo size={42} variant="badge" className="group-hover:scale-105 transition-transform" />
+            <CupidLogo size={46} variant="badge" />
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-editorial text-2xl sm:text-3xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 dark:from-rose-400 dark:to-pink-300 bg-clip-text text-transparent tracking-tight">

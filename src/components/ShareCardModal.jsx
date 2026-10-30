@@ -499,8 +499,8 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
             {/* 1. Header Insignia */}
             <div className="text-center pt-1.5 relative z-10 flex flex-col items-center">
-              <div className="mb-1">
-                <CupidLogo size={24} variant="icon" animated={false} />
+              <div className="mb-0.5">
+                <CupidLogo size={32} variant="icon" animated={false} />
               </div>
               <span className={`text-[10px] uppercase font-bold tracking-[0.25em] block ${pt.goldText}`}>
                 C U P I D S C O R E

@@ -167,7 +167,7 @@ export default function LoveCalculatorCard({
 
           {/* Interlocking Cupid Symbol */}
           <div className="md:col-span-1 flex justify-center py-1 md:py-0">
-            <CupidLogo size={38} variant="badge" className="hover:rotate-12 transition-transform shadow-rose-500/30" />
+            <CupidLogo size={42} variant="badge" className="hover:scale-110 transition-transform shadow-rose-500/30" />
           </div>
 
           {/* Partner 2 Input */}

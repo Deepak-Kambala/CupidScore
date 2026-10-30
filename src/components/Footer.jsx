@@ -13,8 +13,8 @@ export default function Footer({ onOpenAbout, onOpenFeedback }) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           {/* Brand & Slogan */}
           <div className="space-y-1">
-            <div className="flex items-center justify-center md:justify-start gap-2.5">
-              <CupidLogo size={32} variant="badge" animated={false} />
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <CupidLogo size={36} variant="badge" animated={true} />
               <span className="font-editorial text-2xl font-bold bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">
                 CupidScore
               </span>

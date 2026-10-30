@@ -75,6 +75,68 @@
   animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Cupid Angelic Hover & Romantic Pink Aura Animations */
+@keyframes cupidFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2.5deg);
+  }
+}
+
+.animate-cupid-float {
+  animation: cupidFloat 3.4s ease-in-out infinite;
+}
+
+@keyframes pinkHaloPulse {
+  0%, 100% {
+    transform: scale(0.94);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.95;
+  }
+}
+
+.animate-pink-halo {
+  animation: pinkHaloPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes arrowGleam {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(90deg);
+  }
+}
+
+.animate-arrow-gleam {
+  animation: arrowGleam 2s ease-in-out infinite;
+}
+
+@keyframes floatUpHeart {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(14px, -26px) scale(1.2);
+  }
+}
+
+.animate-float-heart {
+  animation: floatUpHeart 2.6s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
 /* Custom delicate scrollbars */
 ::-webkit-scrollbar {
   width: 5px;
