@@ -1,298 +1,251 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { X, Download, Share2, Copy, Check, Sparkles, Layers, Image as ImageIcon } from 'lucide-react';
+import { X, Download, Share2, Copy, Check, Sparkles, Image as ImageIcon } from 'lucide-react';
+
+function formatName(str) {
+  if (!str) return '';
+  return str
+    .trim()
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
 
 export default function ShareCardModal({ isOpen, onClose, result }) {
   if (!isOpen || !result) return null;
 
   const canvasRef = useRef(null);
+  const cardPreviewRef = useRef(null);
   const [cardTheme, setCardTheme] = useState('midnight'); // 'midnight' | 'rose' | 'parchment'
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedImage, setCopiedImage] = useState(false);
 
-  useEffect(() => {
+  const formattedName1 = formatName(result.name1);
+  const formattedName2 = formatName(result.name2);
+
+  const pillars = result.pillars || {
+    emotional: result.percent,
+    chemistry: Math.min(100, Math.max(20, result.percent + 2)),
+    intellectual: Math.min(100, Math.max(20, result.percent - 3)),
+    enduring: Math.min(100, Math.max(20, result.percent + 4)),
+  };
+
+  const serialId = `CS-${String(result.percent * 137).slice(-4)}`;
+  const currentDate = new Date().toLocaleDateString(undefined, {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  // Bulletproof Canvas Renderer for High-DPI Image Export (Zero Path Bleed, No Yellow Wedges!)
+  const renderCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    // 1200 x 1500 Golden Portrait Ratio (4:5) for maximum editorial prestige
     const width = 1200;
     const height = 1500;
     canvas.width = width;
     canvas.height = height;
 
-    // --- Color Palettes ---
-    const themes = {
+    const themeStyles = {
       midnight: {
-        bgStart: '#0d0714',
-        bgMid: '#1a0b22',
-        bgEnd: '#09040e',
-        ambientGlow: 'rgba(225, 29, 72, 0.12)',
-        primaryGold: '#fbbf24',
-        accentGold: '#d97706',
-        deepGold: '#78350f',
-        borderFoil: 'rgba(251, 191, 36, 0.45)',
-        borderHairline: 'rgba(244, 63, 94, 0.25)',
+        bgStart: '#160a22',
+        bgMid: '#0e0517',
+        bgEnd: '#08030d',
+        gold: '#d97706',
+        goldLight: '#fbbf24',
+        goldHairline: 'rgba(251, 191, 36, 0.35)',
         textWhite: '#ffffff',
         textMuted: '#fce7f3',
-        textGold: '#fde68a',
-        ringTrack: 'rgba(255, 255, 255, 0.05)',
-        ringGradientStart: '#f43f5e',
-        ringGradientEnd: '#fbbf24',
-        cardSurface: 'rgba(255, 255, 255, 0.03)',
-        cardBorder: 'rgba(251, 191, 36, 0.15)',
-        meterTrack: 'rgba(255, 255, 255, 0.08)',
+        cardSurface: 'rgba(255, 255, 255, 0.04)',
+        cardBorder: 'rgba(251, 191, 36, 0.2)',
+        barTrack: 'rgba(255, 255, 255, 0.08)',
+        barFill: '#f43f5e',
         sealBg: '#881337',
-        sealGold: '#fbbf24',
+        sealText: '#fbbf24',
       },
       rose: {
-        bgStart: '#fff5f6',
-        bgMid: '#ffebef',
-        bgEnd: '#fff0f3',
-        ambientGlow: 'rgba(244, 63, 94, 0.08)',
-        primaryGold: '#e11d48',
-        accentGold: '#be123c',
-        deepGold: '#881337',
-        borderFoil: 'rgba(225, 29, 72, 0.4)',
-        borderHairline: 'rgba(225, 29, 72, 0.15)',
+        bgStart: '#fff1f4',
+        bgMid: '#ffe4ea',
+        bgEnd: '#ffdce4',
+        gold: '#be123c',
+        goldLight: '#e11d48',
+        goldHairline: 'rgba(225, 29, 72, 0.3)',
         textWhite: '#4c0519',
         textMuted: '#881337',
-        textGold: '#9f1239',
-        ringTrack: 'rgba(244, 63, 94, 0.08)',
-        ringGradientStart: '#e11d48',
-        ringGradientEnd: '#fb7185',
-        cardSurface: 'rgba(255, 255, 255, 0.6)',
-        cardBorder: 'rgba(244, 63, 94, 0.2)',
-        meterTrack: 'rgba(244, 63, 94, 0.12)',
+        cardSurface: 'rgba(255, 255, 255, 0.7)',
+        cardBorder: 'rgba(225, 29, 72, 0.2)',
+        barTrack: 'rgba(225, 29, 72, 0.1)',
+        barFill: '#e11d48',
         sealBg: '#9f1239',
-        sealGold: '#ffe4e6',
+        sealText: '#fff1f2',
       },
       parchment: {
         bgStart: '#fbf7ee',
-        bgMid: '#f5ecd7',
-        bgEnd: '#efe2c7',
-        ambientGlow: 'rgba(217, 119, 6, 0.08)',
-        primaryGold: '#b45309',
-        accentGold: '#92400e',
-        deepGold: '#451a03',
-        borderFoil: 'rgba(180, 83, 9, 0.5)',
-        borderHairline: 'rgba(180, 83, 9, 0.2)',
+        bgMid: '#f4ebd5',
+        bgEnd: '#eee0c4',
+        gold: '#b45309',
+        goldLight: '#d97706',
+        goldHairline: 'rgba(180, 83, 9, 0.3)',
         textWhite: '#291305',
-        textMuted: '#451a03',
-        textGold: '#78350f',
-        ringTrack: 'rgba(69, 26, 3, 0.06)',
-        ringGradientStart: '#b45309',
-        ringGradientEnd: '#d97706',
-        cardSurface: 'rgba(255, 255, 255, 0.45)',
-        cardBorder: 'rgba(180, 83, 9, 0.25)',
-        meterTrack: 'rgba(69, 26, 3, 0.12)',
+        textMuted: '#5e2b08',
+        cardSurface: 'rgba(255, 255, 255, 0.55)',
+        cardBorder: 'rgba(180, 83, 9, 0.22)',
+        barTrack: 'rgba(180, 83, 9, 0.12)',
+        barFill: '#b45309',
         sealBg: '#78350f',
-        sealGold: '#fef3c7',
+        sealText: '#fef3c7',
       },
     };
 
-    const t = themes[cardTheme] || themes.midnight;
+    const s = themeStyles[cardTheme] || themeStyles.midnight;
 
-    // --- 1. Background Fill ---
-    const bg = ctx.createRadialGradient(width / 2, height * 0.38, 80, width / 2, height / 2, 850);
-    bg.addColorStop(0, t.bgMid);
-    bg.addColorStop(0.65, t.bgStart);
-    bg.addColorStop(1, t.bgEnd);
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, width, height);
-
-    // Subtle ambient glow behind central gauge
-    const glow = ctx.createRadialGradient(width / 2, 590, 20, width / 2, 590, 420);
-    glow.addColorStop(0, t.ambientGlow);
-    glow.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, 0, width, height);
-
-    // --- 2. Micro Star Dust Flecks ---
-    ctx.save();
-    const starSeeds = [
-      [140, 180, 1.5, 0.4], [1050, 210, 2, 0.5], [220, 450, 1, 0.3], [1020, 520, 1.8, 0.45],
-      [160, 880, 2, 0.35], [1040, 940, 1.2, 0.3], [240, 1280, 2, 0.4], [980, 1340, 1.5, 0.4],
-      [310, 260, 1.2, 0.3], [910, 310, 1.5, 0.4], [180, 700, 1, 0.25], [1080, 720, 1.5, 0.35]
-    ];
-    starSeeds.forEach(([x, y, r, a]) => {
+    // Helper: Safely draw a rounded rectangle with clean isolated path
+    const safeRoundRect = (x, y, w, h, r, fillColor, strokeColor, strokeW = 1) => {
       ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = t.primaryGold;
-      ctx.globalAlpha = a;
-      ctx.fill();
-    });
-    ctx.restore();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+      if (fillColor) {
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+      }
+      if (strokeColor) {
+        ctx.lineWidth = strokeW;
+        ctx.strokeStyle = strokeColor;
+        ctx.stroke();
+      }
+    };
 
-    // --- 3. Filigree Guilloché Borders ---
-    const m = 44; // outer margin
-    ctx.lineWidth = 2.5;
-    ctx.strokeStyle = t.borderFoil;
-    ctx.strokeRect(m, m, width - m * 2, height - m * 2);
+    // 1. Background Fill
+    ctx.beginPath();
+    const bgGrad = ctx.createRadialGradient(width / 2, height * 0.4, 100, width / 2, height / 2, 900);
+    bgGrad.addColorStop(0, s.bgStart);
+    bgGrad.addColorStop(0.6, s.bgMid);
+    bgGrad.addColorStop(1, s.bgEnd);
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, width, height);
 
-    const m2 = 56; // inner hairline
+    // 2. Dual Gold Guilloché Filigree Borders
+    const m1 = 44;
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = s.goldHairline;
+    ctx.strokeRect(m1, m1, width - m1 * 2, height - m1 * 2);
+
+    const m2 = 56;
+    ctx.beginPath();
     ctx.lineWidth = 1;
-    ctx.strokeStyle = t.borderHairline;
+    ctx.strokeStyle = s.goldHairline;
     ctx.strokeRect(m2, m2, width - m2 * 2, height - m2 * 2);
 
-    // Corner decorative cartouches
+    // Corner flourishes
     const corners = [
-      [m + 16, m + 16],
-      [width - m - 16, m + 16],
-      [m + 16, height - m - 16],
-      [width - m - 16, height - m - 16],
+      [m1 + 18, m1 + 18],
+      [width - m1 - 18, m1 + 18],
+      [m1 + 18, height - m1 - 18],
+      [width - m1 - 18, height - m1 - 18],
     ];
     corners.forEach(([cx, cy]) => {
-      ctx.save();
-      ctx.fillStyle = t.primaryGold;
-      ctx.font = '20px serif';
+      ctx.beginPath();
+      ctx.fillStyle = s.goldLight;
+      ctx.font = '22px serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('✦', cx, cy);
-      ctx.restore();
     });
 
-    // Cardinal compass dots
-    ctx.fillStyle = t.primaryGold;
-    [
-      [width / 2, m], [width / 2, height - m],
-      [m, height / 2], [width - m, height / 2]
-    ].forEach(([px, py]) => {
-      ctx.beginPath();
-      ctx.arc(px, py, 3, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    // --- 4. Top Insignia & Brand Header ---
+    // 3. Header Insignia
     ctx.textAlign = 'center';
-
-    // Emblem Icon
-    ctx.save();
-    ctx.fillStyle = t.primaryGold;
+    ctx.beginPath();
+    ctx.fillStyle = s.goldLight;
     ctx.font = '22px serif';
-    ctx.fillText('❦', width / 2, 115);
-    ctx.restore();
+    ctx.fillText('❦', width / 2, 110);
 
-    // Brand Name with manual luxury tracking
-    ctx.fillStyle = t.textGold;
+    ctx.beginPath();
+    ctx.fillStyle = s.goldLight;
     ctx.font = '600 16px "Plus Jakarta Sans", sans-serif';
-    const brandText = 'C U P I D S C O R E';
-    ctx.fillText(brandText, width / 2, 150);
+    ctx.fillText('C U P I D S C O R E', width / 2, 142);
 
-    ctx.fillStyle = t.textMuted;
-    ctx.font = 'italic 15px "Cormorant Garamond", Georgia, serif';
-    ctx.fillText('Official Certificate of Romantic Compatibility', width / 2, 175);
-
-    // Elegant divider line
-    const gradLine = ctx.createLinearGradient(width / 2 - 160, 0, width / 2 + 160, 0);
-    gradLine.addColorStop(0, 'rgba(0,0,0,0)');
-    gradLine.addColorStop(0.5, t.borderFoil);
-    gradLine.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.strokeStyle = gradLine;
-    ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(width / 2 - 160, 195);
-    ctx.lineTo(width / 2 + 160, 195);
+    ctx.fillStyle = s.textMuted;
+    ctx.font = 'italic 16px "Cormorant Garamond", Georgia, serif';
+    ctx.fillText('Soul Compatibility Atelier', width / 2, 168);
+
+    // Subtle divider line
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = s.goldHairline;
+    ctx.moveTo(width / 2 - 140, 188);
+    ctx.lineTo(width / 2 + 140, 188);
     ctx.stroke();
 
-    // --- 5. Couple Names ---
-    ctx.fillStyle = t.textWhite;
-    ctx.font = 'bold 54px "Italiana", "Playfair Display", Georgia, serif';
-    ctx.fillText(result.name1, width / 2, 275);
-
-    // Calligraphic Ampersand
-    ctx.fillStyle = t.primaryGold;
-    ctx.font = 'italic 34px "Cormorant Garamond", Georgia, serif';
-    ctx.fillText('&', width / 2, 325);
-
-    ctx.fillStyle = t.textWhite;
-    ctx.font = 'bold 54px "Italiana", "Playfair Display", Georgia, serif';
-    ctx.fillText(result.name2, width / 2, 395);
-
-    // --- 6. The Celestial Score Sanctuary (Centerpiece) ---
-    const centerX = width / 2;
-    const centerY = 590;
-    const ringRadius = 135;
-
-    // Outer clockwork hairline ticks
-    ctx.save();
-    ctx.strokeStyle = t.borderHairline;
-    ctx.lineWidth = 1;
-    for (let deg = 0; deg < 360; deg += 6) {
-      const rad = (deg * Math.PI) / 180;
-      const r1 = ringRadius + 22;
-      const r2 = ringRadius + (deg % 30 === 0 ? 28 : 24);
-      ctx.beginPath();
-      ctx.moveTo(centerX + Math.cos(rad) * r1, centerY + Math.sin(rad) * r1);
-      ctx.lineTo(centerX + Math.cos(rad) * r2, centerY + Math.sin(rad) * r2);
-      ctx.stroke();
-    }
-    ctx.restore();
-
-    // Outer subtle orbit
+    // 4. Prominent Couple Names
     ctx.beginPath();
-    ctx.arc(centerX, centerY, ringRadius + 20, 0, Math.PI * 2);
-    ctx.strokeStyle = t.borderHairline;
-    ctx.lineWidth = 1;
+    ctx.fillStyle = s.textWhite;
+    ctx.font = 'bold 56px "Italiana", "Playfair Display", Georgia, serif';
+    ctx.fillText(formattedName1, width / 2, 260);
+
+    ctx.beginPath();
+    ctx.fillStyle = s.goldLight;
+    ctx.font = 'italic 36px "Cormorant Garamond", Georgia, serif';
+    ctx.fillText('&', width / 2, 310);
+
+    ctx.beginPath();
+    ctx.fillStyle = s.textWhite;
+    ctx.font = 'bold 56px "Italiana", "Playfair Display", Georgia, serif';
+    ctx.fillText(formattedName2, width / 2, 375);
+
+    // 5. Central Circular Ring Gauge (Guaranteed Zero Path Bleed!)
+    const gaugeX = width / 2;
+    const gaugeY = 530;
+    const gaugeR = 100;
+
+    // Background track
+    ctx.beginPath();
+    ctx.arc(gaugeX, gaugeY, gaugeR, 0, Math.PI * 2);
+    ctx.lineWidth = 12;
+    ctx.strokeStyle = s.barTrack;
     ctx.stroke();
 
-    // Background circular track
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, ringRadius, 0, Math.PI * 2);
-    ctx.lineWidth = 14;
-    ctx.strokeStyle = t.ringTrack;
-    ctx.stroke();
-
-    // Active Glowing Progress Arc
+    // Active progress arc
     const startAngle = -Math.PI / 2;
     const endAngle = startAngle + (result.percent / 100) * (Math.PI * 2);
-    const arcGrad = ctx.createLinearGradient(centerX - ringRadius, centerY - ringRadius, centerX + ringRadius, centerY + ringRadius);
-    arcGrad.addColorStop(0, t.ringGradientStart);
-    arcGrad.addColorStop(1, t.ringGradientEnd);
-
-    ctx.save();
     ctx.beginPath();
-    ctx.arc(centerX, centerY, ringRadius, startAngle, endAngle);
-    ctx.lineWidth = 14;
+    ctx.arc(gaugeX, gaugeY, gaugeR, startAngle, endAngle);
+    ctx.lineWidth = 12;
     ctx.lineCap = 'round';
-    ctx.strokeStyle = arcGrad;
-    ctx.shadowColor = t.ringGradientStart;
-    ctx.shadowBlur = 18;
-    ctx.stroke();
-    ctx.restore();
-
-    // Center Large Percentage Number
-    ctx.fillStyle = t.textWhite;
-    ctx.font = 'bold 88px "Italiana", "Playfair Display", Georgia, serif';
-    ctx.fillText(`${result.percent}%`, centerX, centerY + 18);
-
-    // Under-percentage Tier Badge Plaque
-    ctx.save();
-    ctx.fillStyle = t.cardSurface;
-    const badgeW = 260;
-    const badgeH = 34;
-    ctx.roundRect(centerX - badgeW / 2, centerY + 46, badgeW, badgeH, 17);
-    ctx.fill();
-    ctx.strokeStyle = t.cardBorder;
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = s.barFill;
     ctx.stroke();
 
-    ctx.fillStyle = t.primaryGold;
+    // Center Percentage
+    ctx.beginPath();
+    ctx.fillStyle = s.textWhite;
+    ctx.font = 'bold 74px "Italiana", "Playfair Display", Georgia, serif';
+    ctx.fillText(`${result.percent}%`, gaugeX, gaugeY + 14);
+
+    // Tier Underline Plaque
+    ctx.beginPath();
+    ctx.fillStyle = s.textWhite;
+    ctx.font = 'bold 28px "Italiana", "Playfair Display", Georgia, serif';
+    ctx.fillText(result.details.tier, width / 2, 690);
+
+    safeRoundRect(width / 2 - 130, 715, 260, 32, 16, s.cardSurface, s.cardBorder, 1);
+    ctx.beginPath();
+    ctx.fillStyle = s.goldLight;
     ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
-    ctx.fillText(result.details.badge.toUpperCase(), centerX, centerY + 68);
-    ctx.restore();
+    ctx.fillText(result.details.badge.toUpperCase(), width / 2, 735);
 
-    // --- 7. Tier Title Header ---
-    ctx.fillStyle = t.textWhite;
-    ctx.font = 'bold 34px "Italiana", "Playfair Display", Georgia, serif';
-    ctx.fillText(result.details.tier, width / 2, 790);
+    // 6. Four-Pillar Precision Grid
+    const gridW = 860;
+    const gridH = 175;
+    const gridX = width / 2 - gridW / 2;
+    const gridY = 785;
 
-    // --- 8. Four-Pillar Precision Micro-Gauges ---
-    const pillars = result.pillars || {
-      emotional: result.percent,
-      chemistry: Math.min(100, result.percent + 2),
-      intellectual: Math.max(15, result.percent - 3),
-      enduring: Math.min(100, result.percent + 4),
-    };
+    safeRoundRect(gridX, gridY, gridW, gridH, 20, s.cardSurface, s.cardBorder, 1);
 
     const pillarItems = [
       { label: 'Emotional Resonance', val: pillars.emotional },
@@ -301,115 +254,95 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
       { label: 'Enduring Harmony', val: pillars.enduring },
     ];
 
-    const boxW = 820;
-    const boxH = 150;
-    const boxX = width / 2 - boxW / 2;
-    const boxY = 835;
-
-    ctx.fillStyle = t.cardSurface;
-    ctx.roundRect(boxX, boxY, boxW, boxH, 20);
-    ctx.fill();
-    ctx.strokeStyle = t.cardBorder;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
     pillarItems.forEach((p, idx) => {
       const col = idx % 2;
       const row = Math.floor(idx / 2);
-      const px = boxX + 40 + col * 390;
-      const py = boxY + 38 + row * 62;
+      const px = gridX + 45 + col * 410;
+      const py = gridY + 45 + row * 72;
 
+      ctx.beginPath();
       ctx.textAlign = 'left';
-      ctx.fillStyle = t.textMuted;
-      ctx.font = '500 13px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = s.textMuted;
+      ctx.font = '500 14px "Plus Jakarta Sans", sans-serif';
       ctx.fillText(p.label, px, py);
 
+      ctx.beginPath();
       ctx.textAlign = 'right';
-      ctx.fillStyle = t.textWhite;
-      ctx.font = 'bold 14px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText(`${p.val}%`, px + 330, py);
+      ctx.fillStyle = s.textWhite;
+      ctx.font = 'bold 15px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText(`${p.val}%`, px + 350, py);
 
-      // Track
-      const trackW = 330;
-      const trackH = 4.5;
-      const trackY = py + 10;
-      ctx.fillStyle = t.meterTrack;
-      ctx.roundRect(px, trackY, trackW, trackH, 2);
-      ctx.fill();
+      // Track bar
+      const barW = 350;
+      const barH = 5;
+      const barY = py + 12;
+      safeRoundRect(px, barY, barW, barH, 2.5, s.barTrack, null);
 
-      // Progress
-      const fillW = (p.val / 100) * trackW;
-      ctx.fillStyle = t.primaryGold;
-      ctx.roundRect(px, trackY, fillW, trackH, 2);
-      ctx.fill();
+      // Fill bar
+      const filledW = (p.val / 100) * barW;
+      safeRoundRect(px, barY, filledW, barH, 2.5, s.barFill, null);
     });
 
-    // --- 9. Quotation & Summary Decree ---
+    // 7. Poetic Quotation
     ctx.textAlign = 'center';
-    ctx.fillStyle = t.textMuted;
-    ctx.font = 'italic 23px "Cormorant Garamond", Georgia, serif';
+    ctx.beginPath();
+    ctx.fillStyle = s.textMuted;
+    ctx.font = 'italic 25px "Cormorant Garamond", Georgia, serif';
+
     const words = result.details.summary.split(' ');
     let line = '';
-    let qy = 1050;
-    const maxLineW = 860;
+    let qy = 1045;
+    const maxLineW = 840;
 
     for (let i = 0; i < words.length; i++) {
       const test = line + words[i] + ' ';
       const metrics = ctx.measureText(test);
       if (metrics.width > maxLineW && i > 0) {
+        ctx.beginPath();
         ctx.fillText(line, width / 2, qy);
         line = words[i] + ' ';
-        qy += 38;
+        qy += 40;
       } else {
         line = test;
       }
     }
+    ctx.beginPath();
     ctx.fillText(line, width / 2, qy);
 
-    // --- 10. Luxury Embossed Wax Seal & Signature Footer ---
+    // 8. Bottom Seal & Monogram
     const sealX = width / 2;
     const sealY = 1270;
-    const sealR = 50;
+    const sealR = 45;
 
-    // Outer scalloped/embossed rim
-    ctx.save();
+    safeRoundRect(sealX - sealR, sealY - sealR, sealR * 2, sealR * 2, sealR, s.sealBg, s.goldHairline, 1.5);
     ctx.beginPath();
-    ctx.arc(sealX, sealY, sealR + 4, 0, Math.PI * 2);
-    ctx.fillStyle = t.sealBg;
-    ctx.shadowColor = 'rgba(0,0,0,0.4)';
-    ctx.shadowBlur = 14;
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(sealX, sealY, sealR - 4, 0, Math.PI * 2);
-    ctx.strokeStyle = t.sealGold;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    ctx.fillStyle = t.sealGold;
+    ctx.fillStyle = s.sealText;
     ctx.font = 'bold 24px "Italiana", serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('❦', sealX, sealY);
-    ctx.restore();
 
-    // Authenticated Serial Code & Timestamp
-    const serialCode = `AUTHENTICATED ATELIER RECORD • NO. CS-${String(result.percent * 107).slice(-6)}`;
-    ctx.fillStyle = t.textGold;
-    ctx.font = '600 11px "Plus Jakarta Sans", sans-serif';
-    ctx.fillText(serialCode, width / 2, 1375);
+    // 9. Serial Number & Authenticated Stamp
+    ctx.beginPath();
+    ctx.fillStyle = s.goldLight;
+    ctx.font = '600 12px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText(`AUTHENTICATED ATELIER RECORD • NO. ${serialId}`, width / 2, 1365);
 
-    ctx.fillStyle = t.borderFoil;
-    ctx.font = 'italic 13px "Cormorant Garamond", serif';
-    ctx.fillText(`Issued on ${new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })} • CupidScore Atelier`, width / 2, 1405);
+    ctx.beginPath();
+    ctx.fillStyle = s.goldHairline;
+    ctx.font = 'italic 14px "Cormorant Garamond", serif';
+    ctx.fillText(`Issued on ${currentDate} • CupidScore Atelier`, width / 2, 1395);
+  };
 
+  useEffect(() => {
+    renderCanvas();
   }, [result, cardTheme]);
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `CupidScore-Love-Card-${result.name1}-and-${result.name2}.png`;
+    link.download = `CupidScore-${formattedName1}-and-${formattedName2}.png`;
     link.href = canvas.toDataURL('image/png', 1.0);
     link.click();
   };
@@ -443,6 +376,56 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
   const shareText = `Our Love Compatibility Score is ${result.percent}% (${result.details.tier}) on CupidScore!`;
 
+  // Dynamic Theme CSS for the Interactive Live Card Preview
+  const previewThemes = {
+    midnight: {
+      cardBg: 'bg-gradient-to-b from-[#160a22] via-[#0e0517] to-[#08030d] text-rose-100 border-amber-500/30',
+      innerBorder: 'border-rose-500/20',
+      goldText: 'text-amber-400',
+      titleText: 'text-white',
+      mutedText: 'text-rose-200/80',
+      barBg: 'bg-white/10',
+      barFill: 'bg-gradient-to-r from-rose-500 to-amber-400',
+      ringColor: '#f43f5e',
+      plaqueBg: 'bg-white/5 border-amber-500/20 text-amber-300',
+      sealBg: 'bg-rose-950 border-amber-500/40 text-amber-300',
+      surfaceBg: 'bg-white/[0.03] border-white/10',
+    },
+    rose: {
+      cardBg: 'bg-gradient-to-b from-[#fff1f4] via-[#ffe4ea] to-[#ffdce4] text-rose-950 border-rose-300',
+      innerBorder: 'border-rose-400/25',
+      goldText: 'text-rose-700',
+      titleText: 'text-rose-950',
+      mutedText: 'text-rose-800/80',
+      barBg: 'bg-rose-900/10',
+      barFill: 'bg-gradient-to-r from-rose-600 to-pink-500',
+      ringColor: '#e11d48',
+      plaqueBg: 'bg-rose-500/10 border-rose-400/30 text-rose-800',
+      sealBg: 'bg-rose-700 border-rose-300 text-rose-100',
+      surfaceBg: 'bg-white/70 border-rose-200/60 shadow-xs',
+    },
+    parchment: {
+      cardBg: 'bg-gradient-to-b from-[#fbf7ee] via-[#f4ebd5] to-[#eee0c4] text-amber-950 border-amber-400/50',
+      innerBorder: 'border-amber-600/20',
+      goldText: 'text-amber-800',
+      titleText: 'text-[#291305]',
+      mutedText: 'text-amber-900/80',
+      barBg: 'bg-amber-950/10',
+      barFill: 'bg-gradient-to-r from-amber-600 to-amber-500',
+      ringColor: '#b45309',
+      plaqueBg: 'bg-amber-500/10 border-amber-600/30 text-amber-900',
+      sealBg: 'bg-amber-900 border-amber-300 text-amber-100',
+      surfaceBg: 'bg-white/60 border-amber-200/80 shadow-xs',
+    },
+  };
+
+  const pt = previewThemes[cardTheme] || previewThemes.midnight;
+
+  // SVG circular gauge math for live preview
+  const previewRadius = 42;
+  const previewCircumference = 2 * Math.PI * previewRadius;
+  const previewOffset = previewCircumference - (result.percent / 100) * previewCircumference;
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto animate-fade-in">
       <div className="relative w-full max-w-xl my-4 sm:my-8 bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-7 shadow-2xl border border-rose-200/80 dark:border-rose-900/40 text-slate-800 dark:text-slate-100 max-h-[94dvh] overflow-y-auto">
@@ -456,18 +439,15 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
 
         {/* Header */}
         <div className="text-center mb-4">
-          <div className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white mb-2 shadow-md shadow-rose-500/25">
-            <Share2 className="w-5 h-5" />
-          </div>
           <h2 className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight">
-            High-Precision Love Card
+            The Love Card Atelier
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Crafted with editorial golden-ratio proportions and precision filigree
+            Refined editorial layout with authentic typography, zero clutter, and high-DPI export
           </p>
         </div>
 
-        {/* Theme Finish Selector */}
+        {/* Theme Switcher Pills */}
         <div className="flex items-center justify-center gap-2 mb-4">
           <button
             onClick={() => setCardTheme('midnight')}
@@ -501,15 +481,156 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
           </button>
         </div>
 
-        {/* High Definition Card Preview */}
+        {/* Real Live Pixel-Perfect CSS Preview Card (Guaranteed Flawless Rendering!) */}
         <div className="flex justify-center my-2">
-          <canvas
-            ref={canvasRef}
-            className="w-full max-w-[340px] sm:max-w-[380px] rounded-2xl shadow-2xl border border-rose-200/50 dark:border-rose-900/50 aspect-[4/5] object-contain"
-          />
+          <div
+            ref={cardPreviewRef}
+            className={`w-full max-w-[360px] sm:max-w-[390px] rounded-2xl p-6 shadow-2xl border relative flex flex-col justify-between aspect-[4/5] select-none transition-all duration-300 ${pt.cardBg}`}
+          >
+            {/* Inner Hairline Filigree Frame */}
+            <div className={`absolute inset-2.5 rounded-xl border pointer-events-none ${pt.innerBorder}`} />
+
+            {/* Corner Asterisks */}
+            <span className={`absolute top-4 left-4 text-xs ${pt.goldText}`}>✦</span>
+            <span className={`absolute top-4 right-4 text-xs ${pt.goldText}`}>✦</span>
+            <span className={`absolute bottom-4 left-4 text-xs ${pt.goldText}`}>✦</span>
+            <span className={`absolute bottom-4 right-4 text-xs ${pt.goldText}`}>✦</span>
+
+            {/* 1. Header Insignia */}
+            <div className="text-center pt-2 relative z-10">
+              <span className={`text-sm block leading-none mb-1 ${pt.goldText}`}>❦</span>
+              <span className={`text-[10px] uppercase font-bold tracking-[0.25em] block ${pt.goldText}`}>
+                C U P I D S C O R E
+              </span>
+              <span className={`text-[11px] font-cormorant italic block opacity-75 ${pt.mutedText}`}>
+                Soul Compatibility Atelier
+              </span>
+              <div className="w-16 h-px bg-current opacity-25 mx-auto mt-1.5" />
+            </div>
+
+            {/* 2. Prominent Couple Names */}
+            <div className="text-center my-1 relative z-10">
+              <h3 className={`font-editorial text-2xl sm:text-3xl font-bold tracking-tight leading-tight ${pt.titleText}`}>
+                {formattedName1}
+              </h3>
+              <span className={`font-cormorant italic text-lg leading-none block my-0.5 ${pt.goldText}`}>
+                &
+              </span>
+              <h3 className={`font-editorial text-2xl sm:text-3xl font-bold tracking-tight leading-tight ${pt.titleText}`}>
+                {formattedName2}
+              </h3>
+            </div>
+
+            {/* 3. Circular Score Gauge */}
+            <div className="flex flex-col items-center justify-center my-1 relative z-10">
+              <div className="relative w-24 h-24 flex items-center justify-center">
+                <svg className="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r={previewRadius}
+                    className="opacity-15 stroke-current"
+                    strokeWidth="8"
+                    fill="transparent"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r={previewRadius}
+                    stroke={pt.ringColor}
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    fill="transparent"
+                    strokeDasharray={previewCircumference}
+                    strokeDashoffset={previewOffset}
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className={`font-editorial text-3xl font-black ${pt.titleText}`}>
+                    {result.percent}%
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-2 text-center">
+                <h4 className={`font-editorial text-base font-bold ${pt.titleText}`}>
+                  {result.details.tier}
+                </h4>
+                <div className={`inline-block px-3 py-0.5 mt-1 rounded-full text-[9px] font-bold uppercase tracking-wider border ${pt.plaqueBg}`}>
+                  {result.details.badge}
+                </div>
+              </div>
+            </div>
+
+            {/* 4. Four-Pillar Precision Grid */}
+            <div className={`p-3 rounded-xl border relative z-10 ${pt.surfaceBg}`}>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                <div>
+                  <div className="flex justify-between text-[10px] font-medium mb-0.5 opacity-80">
+                    <span>Emotional</span>
+                    <span className="font-bold">{pillars.emotional}%</span>
+                  </div>
+                  <div className={`w-full h-1 rounded-full overflow-hidden ${pt.barBg}`}>
+                    <div className={`h-full rounded-full ${pt.barFill}`} style={{ width: `${pillars.emotional}%` }} />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-[10px] font-medium mb-0.5 opacity-80">
+                    <span>Chemistry</span>
+                    <span className="font-bold">{pillars.chemistry}%</span>
+                  </div>
+                  <div className={`w-full h-1 rounded-full overflow-hidden ${pt.barBg}`}>
+                    <div className={`h-full rounded-full ${pt.barFill}`} style={{ width: `${pillars.chemistry}%` }} />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-[10px] font-medium mb-0.5 opacity-80">
+                    <span>Mind Sync</span>
+                    <span className="font-bold">{pillars.intellectual}%</span>
+                  </div>
+                  <div className={`w-full h-1 rounded-full overflow-hidden ${pt.barBg}`}>
+                    <div className={`h-full rounded-full ${pt.barFill}`} style={{ width: `${pillars.intellectual}%` }} />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-[10px] font-medium mb-0.5 opacity-80">
+                    <span>Longevity</span>
+                    <span className="font-bold">{pillars.enduring}%</span>
+                  </div>
+                  <div className={`w-full h-1 rounded-full overflow-hidden ${pt.barBg}`}>
+                    <div className={`h-full rounded-full ${pt.barFill}`} style={{ width: `${pillars.enduring}%` }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 5. Poetic Decree */}
+            <p className={`font-cormorant italic text-xs sm:text-sm text-center leading-relaxed px-2 my-1 relative z-10 ${pt.mutedText}`}>
+              "{result.details.summary}"
+            </p>
+
+            {/* 6. Seal & Monogram Footer */}
+            <div className="flex flex-col items-center pb-2 relative z-10">
+              <div className={`w-8 h-8 rounded-full border flex items-center justify-center text-xs font-serif shadow-sm mb-1 ${pt.sealBg}`}>
+                ❦
+              </div>
+              <span className={`text-[9px] font-bold tracking-wider uppercase ${pt.goldText}`}>
+                AUTHENTICATED RECORD • NO. {serialId}
+              </span>
+              <span className={`text-[8px] font-cormorant italic opacity-70 ${pt.mutedText}`}>
+                Issued on {currentDate} • CupidScore Atelier
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Actions & Export */}
+        {/* Hidden Canvas used for high-res 1200x1500px download/clipboard export */}
+        <canvas ref={canvasRef} className="hidden" />
+
+        {/* Action Buttons */}
         <div className="mt-5 space-y-2.5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button
@@ -525,7 +646,7 @@ export default function ShareCardModal({ isOpen, onClose, result }) {
               className="flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl font-medium text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 border border-slate-200 dark:border-slate-700 cursor-pointer transition-all"
             >
               {copiedImage ? <Check className="w-4 h-4 text-emerald-500" /> : <ImageIcon className="w-4 h-4 text-slate-500" />}
-              <span>{copiedImage ? 'Image Copied!' : 'Copy Image to Clipboard'}</span>
+              <span>{copiedImage ? 'Image Copied to Clipboard!' : 'Copy Image to Clipboard'}</span>
             </button>
           </div>
 
