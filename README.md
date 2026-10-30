@@ -1,148 +1,110 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-# ❤️ Love Calculator 
+# ❤️ CupidScore — Love Alchemy & Compatibility
 
-A light‑hearted web app that playfully generates a “love compatibility score” between two names. It’s designed purely for fun and entertainment — no science involved, just smiles and surprises. 
-
-
----
-## 🛠️ Tech Used
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-
+A romantic, beautifully refactored React web application that calculates soulmate compatibility using Pythagorean numerology, delivers mystical Love Oracle prophecies, generates custom love letters, recommends couple soundtracks, and features an interactive Wheel of Love game.
 
 ---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React 19](https://react.dev/)
+- **Bundler & Dev Server**: [Vite 8](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) with custom glassmorphism and romantic gradients
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Audio Synthesizer**: Native Web Audio API for gentle romantic harp glissando and heartbeats
+- **Effects**: HTML5 Canvas Ambient Floating Hearts & [Canvas-Confetti](https://www.npmjs.com/package/canvas-confetti)
+
+---
+
 ## ✨ Features
-- 🎯 Enter two names and get a love percentage (0-100%)
-- 📱 Simple, responsive UI that works on all devices
-- ⚡ Pure client-side — no backend required
-- 🎨 Easy to customize (UI, logic, animations)
+
+- **💘 Core Love Calculator**:
+  - Pythagorean letter frequency reduction (A-Z mapped to 1-9).
+  - Master number preservation (11, 22, 33) and twin flame harmonic boosts.
+  - Optional small mystical surprise toggle (±5%).
+  - Glowing circular SVG percentage meter with smooth numerical counter.
+- **🔮 Mystical Love Oracle**:
+  - Cosmic romantic prophecies and celestial whispers tailored to relationship tiers.
+  - Daily romantic suggestions and micro-dates.
+- **👤 Personality Archetypes**:
+  - In-depth analysis of partner expression numbers (e.g. Sovereign Leader, Gentle Empath, Radiant Muse).
+  - Key traits, strengths, challenges, and love language synergy score.
+- **🎵 Couple's Love Song**:
+  - Curated romantic soundtrack based on compatibility score bracket.
+  - Direct YouTube playback, cover preview, and 1-click link copying.
+- **💌 Love Letter Generator**:
+  - Compose romantic notes on virtual stationery (Blush Rose, Antique Parchment, Midnight Velvet).
+  - Includes wax seal emblem and high-resolution PNG image download.
+- **🎡 Spin the Wheel of Love**:
+  - Interactive canvas wheel game with romantic dares, sweet massage coupons, date ideas, and love points.
+- **📜 History & Persistence**:
+  - LocalStorage tracking for saved compatibility tests with 1-click retest and deletion.
+- **🎨 Shareable Romance Card**:
+  - Generates a 900x900 canvas love card with floral borders, names, score, and quote for download or social sharing (WhatsApp, X, Telegram).
+- **🌙 Romantic Dark & Light Themes**:
+  - Daylight blush pink and midnight velvet starlight themes with smooth transitions.
 
 ---
 
 ## 📁 Project Structure
-```
-💖 Love-Calculator/
-├─ 🧩 .vscode/
-│  └─ ⚙ settings.json
-├─ 🎮 Games/
-│  ├─ 🏠 index.html
-│  ├─ 💻 script.js
-│  └─ 🎨 style.css
-├─ ℹ about.html
-├─ 📜 CODE_OF_CONDUCT.md
-├─ 🤝 CONTRIBUTING.md
-├─ 🌌 dark-bg.jpeg
-├─ ❤ hearts.png
-├─ 🧠 how-it-works.html
-├─ 🏡 index.html
-├─ 📄 LICENSE
-├─ 🖼 logo.svg
-├─ 🪶 README.md
-├─ ⚡ script.js
-├─ 🎀 style.css
-└─ 🧊 test-glassmorphism.html
-```
-
-## 🚀 Quick Start
-
-Clone the repository:
 
 ```
-git clone https://github.com/Deepak-Kambala/Love-Calculator.git
-cd Love-Calculator
+CupidScore/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx               # Header with history badge, audio, confetti & theme controls
+│   │   ├── RomanticAmbience.jsx     # Floating romantic hearts & sparkle particles canvas
+│   │   ├── LoveCalculatorCard.jsx   # Core calculator with circular SVG score gauge
+│   │   ├── LoveOracle.jsx           # Celestial Love Oracle parchment whisper
+│   │   ├── PersonalityModal.jsx     # Numerological archetypes comparison
+│   │   ├── CoupleSongModal.jsx      # Curated couple's song recommendation
+│   │   ├── LoveLetterModal.jsx      # Handwritten-style love letter composer & PNG export
+│   │   ├── LoveSpinnerModal.jsx     # Wheel of Love game with sound effects
+│   │   ├── ShareCardModal.jsx       # High-definition canvas love card generator
+│   │   ├── HistoryModal.jsx         # Saved compatibility history
+│   │   ├── FeedbackModal.jsx        # Star rating & feedback form
+│   │   ├── AboutModal.jsx           # Pythagorean science explanation & FAQ
+│   │   ├── FeaturesGrid.jsx         # Romantic feature highlights
+│   │   └── Footer.jsx               # Romantic footer with smooth scroll to top
+│   ├── data/
+│   │   ├── numerology.js            # Pythagorean math, personality archetypes & prophecies
+│   │   ├── songs.js                 # Curated couple song catalog
+│   │   └── wheelItems.js            # Romantic dares & coupons
+│   ├── utils/
+│   │   ├── sound.js                 # Web Audio API synthesizers (harp chimes, heartbeats)
+│   │   └── storage.js               # LocalStorage management
+│   ├── App.jsx                      # Main application state & layout
+│   ├── main.jsx                     # React root mount
+│   └── index.css                    # Tailwind CSS v4 & romantic custom styles
+├── index.html                       # HTML entry point with Google Fonts
+├── vite.config.js                   # Vite & Tailwind configuration
+└── package.json                     # Project scripts and dependencies
 ```
-Open index.html in your favorite browser.
-
-Type two names → Click the button → See your love score 
-
-## ⚙️ How It Works
-- 🔤 Takes two input names
-
-- 🎲 Applies simple random or character-based algorithm
-
-- 📊 Generates a percentage between 0-100%
-
-- 💬 Displays fun messages based on score ranges
-
-### Logic can be easily customized by contributors!
-
-## 🔮 Future Enhancements
-
-- 📲 PWA (Progressive Web App) 
-
-- 💬 Chatbot / Love Guru Mode
-
-- 🎙️ Voice Input / Output 
-
-
-## 🤝 Contributing
-
- We love contributions! Here's how you can help:
-
-- 🐛 Report bugs
-
-- 💡 Suggest new features
-
-- 🎨 Improve UI/UX
-
-- 📚 Improve documentation
-
-- 🧪 Add tests
-
-- 🔧 Fix issues
-
-- 📈 Improve and optimize site Performance
-
-### 🎯 For Hacktoberfest Participants:
-Look for issues labeled hacktoberfest or good-first-issue
-
-Check the help-wanted tag for specific needs
-
-## 📝 Contribution Steps:
-- ⭐ Star the repository 
-
-- 🍴 Fork the repository
-
-- 🌿 Create a feature branch
-
-```
-git checkout -b amazing-feature
-```
-💾 Commit your changes
-
-```
-git commit -m 'Add amazing feature'
-```
-📤 Push to branch
-
-```
-git push origin amazing-feature
-```
-🔔 Open a Pull Request
-
-
-## 📜 Code of Conduct
-
-This project follows a Code of Conduct to keep the community welcoming and respectful. By participating you agree to abide by it. 
-
-📖 Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
-
-To report unacceptable behavior, contact the maintainers via [@Deepak-Kambala](https://github.com/Deepak-Kambala) or open a private issue.
 
 ---
 
+## 🚀 Getting Started
+
+### 1. Install dependencies:
+```bash
+npm install
+```
+
+### 2. Start the development server:
+```bash
+npm run dev
+```
+
+### 3. Build for production:
+```bash
+npm run build
+```
+
+---
 
 ## 📄 License
-This project is licensed under the **MIT License** — see the LICENSE file for details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Maintainer
-### *Deepak Kambala*
-
-Passionate about creating fun web experiences 🚀
-
-<div align="center"> Don't forget to ⭐ star this repository! Made with 💖 and JavaScript </div>
+**Deepak Kambala** — *Passionate about crafting delightful web experiences.*
